@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @list.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @list.description %>
+</p>
+
+<p>
+  <b>Event date:</b>
+  <%= @list.event_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
+
+<h2>Add a List Item</h2>
+
+<%= form_for([@list, Item.new], :remote => true) do |f| %>
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, :cols => 40, :rows => 2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Items</h2>
+<div id="items">
+  <% @list.items.reverse.each do |item| %>
+    <div class="item">
+      <p><%= item.name %></p>
+      <p><%= item.url %></p>
+      <p><%= item.description %></p>
+    </div>
+  <% end %>
+</div>
