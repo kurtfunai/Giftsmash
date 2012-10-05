@@ -1,48 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
+
+
+<h2>
   <%= @list.title %>
-</p>
+  <% if can? :update, @list %>
+    <span class="label label-info"><%= link_to 'Edit', edit_list_path(@list) %></span>
+  <% end %>
+  <% if can? :destroy, @list %>
+    <span class="label label-important"><%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' } %></a></span>
+  <% end %>
+  <span class="label"><%= link_to 'Back', lists_path %></span>
+</h2>
 
 <p>
-  <b>Description:</b>
+  <small>Event Date: <%= @list.event_date %></small><br/>
   <%= @list.description %>
 </p>
-
-<p>
-  <b>Event date:</b>
-  <%= @list.event_date %>
-</p>
-
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
-
-<h2>Add a List Item</h2>
-
-<%= form_for([@list, Item.new], :remote => true) do |f| %>
-  <div class="field">
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.text_area :description, :cols => 40, :rows => 2 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<h2>Items</h2>
-<div id="items">
-  <% @list.items.reverse.each do |item| %>
-    <div class="item">
-      <p><%= item.name %></p>
-      <p><%= item.url %></p>
-      <p><%= item.description %></p>
+<br/>
+<% if can? :update, @list %>
+  <h4>Add a List Item</h4>
+  <!--form_for([@list, Item.new], :remote => true)-->
+  <%= form_for([@list, Item.new]) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :website %>
+      <%= f.text_field :url %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, :cols => 40, :rows => 2 %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-</div>
+<% end %>
+<h2>Items</h2>
+<table id="list-items" class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list.items.reverse.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.url %></td>
+      <td><%= item.description %></td>
+    </tr>
+    <% end %>
+  </tbody>

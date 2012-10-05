@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+body {
+  padding: 12px 50px;
+}
+
+.label a {
+  color: #fff;
+}

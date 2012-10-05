@@ -1,8 +1,13 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  #before_filter :authenticate_user!, except: [:index, :show]
+  
+  # CanCan Method : This loads all resources, calling things like @list = List.find(params[:id]) is no longer necessary
+  load_and_authorize_resource 
+
   # GET /lists
   # GET /lists.json
   def index
+    @current_user
     @lists = List.all
 
     respond_to do |format|
@@ -14,8 +19,6 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @list = List.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @list }
@@ -25,8 +28,6 @@ class ListsController < ApplicationController
   # GET /lists/new
   # GET /lists/new.json
   def new
-    @list = List.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @list }
@@ -35,14 +36,13 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-    @list = List.find(params[:id])
+
   end
 
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(params[:list])
-
+    @list[:user_id] = current_user.id # @todo Is this necessary?
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
@@ -57,8 +57,6 @@ class ListsController < ApplicationController
   # PUT /lists/1
   # PUT /lists/1.json
   def update
-    @list = List.find(params[:id])
-
     respond_to do |format|
       if @list.update_attributes(params[:list])
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
