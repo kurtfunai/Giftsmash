@@ -1,10 +1,12 @@
 Gimmegimme::Application.routes.draw do
   
+  devise_for :users, path_names: {sign_in: "login"}
+
   resources :lists do
     resources :items
   end
 
-  root :to => "lists#index"
+  root :to => "welcome#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!
   def create
     @list = List.find params[:list_id]
     @item = @list.items.create params[:item]
