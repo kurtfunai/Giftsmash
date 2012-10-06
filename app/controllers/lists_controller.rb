@@ -1,14 +1,14 @@
 class ListsController < ApplicationController
-  #before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:show]
   
-  # CanCan Method : This loads all resources, calling things like @list = List.find(params[:id]) is no longer necessary
+  # CanCan Method : This loads all resources, ex: @list = List.find(params[:id]) is no longer necessary
   load_and_authorize_resource 
 
   # GET /lists
   # GET /lists.json
   def index
-    @current_user
-    @lists = List.all
+    @lists = current_user.lists
+    #@lists = List.all()
 
     respond_to do |format|
       format.html # index.html.erb

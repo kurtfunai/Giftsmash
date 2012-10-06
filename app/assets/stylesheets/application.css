@@ -11,8 +11,13 @@
  *= require_self
  *= require_tree .
  */
+@media (min-width: 900px) and (max-width: 1100) {
+  padding: 12px 50px;
+}
+
 body {
   padding: 12px 50px;
+  background-image: url('../img/glyphicons-halflings.png');
 }
 
 .label a {
