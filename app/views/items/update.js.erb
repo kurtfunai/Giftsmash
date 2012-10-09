@@ -1,3 +1,4 @@
+$('#modal-window').modal('hide');
 var el = $(".item_<%= escape_javascript(@item.id.to_s) %>");
 el.hide();
 el.html('<%= j render("table_item") %>');

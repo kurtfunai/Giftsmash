@@ -20,16 +20,17 @@
     <h4>Add a List Item</h4>
     <!--form_for([@list, Item.new], :remote => true)-->
     <%= form_for([@list, Item.new], :remote => true) do |f| %>
-        <%= f.label :name, :class => 'control-label' %>
-        <%= f.text_field :name, :class => 'text_field' %>
-        <%= f.label :website, :class => 'control-label' %>
-        <%= f.text_field :url, :class => 'text_field' %>
-        <%= f.label :description, :class => 'control-label' %>
-        <%= f.text_area :description, :class => 'text_field', :cols => 40, :rows => 2 %>
-      <div class="actions">
+        <%= f.label :name, :class => 'control-label pull-left' %>
+        <%= f.text_field :name, :class => 'text_field  pull-left' %>
+        <%= f.label :website, :class => 'control-label  pull-left' %>
+        <%= f.text_field :url, :class => 'text_field  pull-left' %>
+        <%= f.label :description, :class => 'control-label  pull-left' %>
+        <%= f.text_area :description, :class => 'text_field  pull-left', :cols => 40, :rows => 1 %>
+      <div class="actions  pull-left">
         <%= f.submit nil, :class => 'btn btn-primary' %>
       </div>
     <% end %>
+    <div class="clearfix"></div>
   </div>
 <% end %>
 
@@ -39,7 +40,7 @@
       <th>Name</th>
       <th>Website</th>
       <th>Description</th>
-      <th>Actions</th>
+      <th></th>
     </tr>
   </thead>
   <tbody class="table-body">
@@ -54,6 +55,9 @@
         <% end %>
         <% if can? :destroy, item %>
           <%= link_to 'Delete', list_item_path(@list, item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% if cannot? :update, item %>
+          www.link.com
         <% end %>
       </td>
     </tr>

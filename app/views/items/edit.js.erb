@@ -1,1 +1,3 @@
-$(".item_<%= escape_javascript(@item.id.to_s) %>").html('<%= j render("table_form")%>');
+//$(".item_<%= escape_javascript(@item.id.to_s) %>").html('<%= j render("table_form")%>');
+$('body').append('<%= j render("form_modal")%>')
+$('#modal-window').modal('show');

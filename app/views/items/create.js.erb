@@ -6,7 +6,7 @@ $('.table-body').prepend(
     "<td><%= escape_javascript(@item.description) %>" +
     "</td>" +
     "<td>" +
-      "<%= escape_javascript(link_to 'Edit', list_item_path(@item.list, @item), :class=>'btn btn-mini') %> " +
+      "<%= escape_javascript(link_to 'Edit', edit_list_item_path(@item.list, @item), :remote => true, :class=>'btn btn-mini') %> " +
       "<%= escape_javascript(link_to 'Delete', list_item_path(@item.list, @item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }) %>" +
     "</td>" +
   "</tr>").hide().fadeIn();
