@@ -22,6 +22,9 @@ end
 
 gem 'jquery-rails'
 
+# Design
+gem "twitter-bootstrap-rails"
+
 # For Authentication
 gem 'devise'
 gem 'cancan'

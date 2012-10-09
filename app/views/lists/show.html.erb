@@ -1,59 +1,61 @@
-<p id="notice"><%= notice %></p>
-
-
-
-<h2>
+<h1>
   <%= @list.title %>
+  &nbsp;
   <% if can? :update, @list %>
-    <span class="label label-info"><%= link_to 'Edit', edit_list_path(@list) %></span>
+    <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini' %>
   <% end %>
   <% if can? :destroy, @list %>
-    <span class="label label-important"><%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' } %></a></span>
+    <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-mini btn-danger' %></a>
   <% end %>
-  <span class="label"><%= link_to 'Back', lists_path %></span>
-</h2>
+  <%= link_to 'Back', lists_path , :class=>'btn btn-mini btn-inverse' %>
+</h1>
 
-<p>
+<p class="lead">
   <small>Event Date: <%= @list.event_date %></small><br/>
-  <%= @list.description %>
+  <%= @list.description %>  
 </p>
-<br/>
+
 <% if can? :update, @list %>
-  <h4>Add a List Item</h4>
-  <!--form_for([@list, Item.new], :remote => true)-->
-  <%= form_for([@list, Item.new]) do |f| %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :website %>
-      <%= f.text_field :url %>
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description, :cols => 40, :rows => 2 %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+  <div class="well">
+    <h4>Add a List Item</h4>
+    <!--form_for([@list, Item.new], :remote => true)-->
+    <%= form_for([@list, Item.new], :remote => true) do |f| %>
+        <%= f.label :name, :class => 'control-label' %>
+        <%= f.text_field :name, :class => 'text_field' %>
+        <%= f.label :website, :class => 'control-label' %>
+        <%= f.text_field :url, :class => 'text_field' %>
+        <%= f.label :description, :class => 'control-label' %>
+        <%= f.text_area :description, :class => 'text_field', :cols => 40, :rows => 2 %>
+      <div class="actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
-<h2>Items</h2>
+
 <table id="list-items" class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Website</th>
       <th>Description</th>
+      <th>Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-body">
     <% @list.items.reverse.each do |item| %>
-    <tr>
+    <tr class="item_<%= item.id %>">
       <td><%= item.name %></td>
-      <td><%= item.url %></td>
+      <td><a href="<%= item.url %>"><%= item.url %></a></td>
       <td><%= item.description %></td>
+      <td>
+        <% if can? :update, item %>
+          <%= link_to 'Edit', edit_list_item_path(@list, item), :remote => true, :class=>'btn btn-mini' %>
+        <% end %>
+        <% if can? :destroy, item %>
+          <%= link_to 'Delete', list_item_path(@list, item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

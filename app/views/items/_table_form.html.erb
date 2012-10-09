@@ -1,0 +1,11 @@
+<td colspan="4">
+<%= form_for @item, :url => list_item_path(@list, @item), :remote=>true, method: :put do |f| %>
+  <%= f.text_field :name, :class => 'text_field' %>
+
+  <%= f.text_field :url, :class => 'text_field' %>
+
+  <%= f.text_area :description, :class => 'text_field', :cols => 40, :rows => 1 %>
+
+  <%= f.submit "Save", :class=>'btn btn-mini btn-primary' %>
+<% end %>
+</td>

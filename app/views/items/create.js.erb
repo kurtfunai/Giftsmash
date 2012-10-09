@@ -1,2 +1,12 @@
-$("#new_item")[0].reset()
-$("#items").prepend("<%= escape_javascript(@item.name) %>");
+$("#new_item")[0].reset();
+$('.table-body').prepend(
+  "<tr class='item_<%= escape_javascript(@item.id.to_s) %>'>"+
+    "<td><%= escape_javascript(@item.name) %></td>" +
+    "<td><%= escape_javascript(@item.url) %></td>" +
+    "<td><%= escape_javascript(@item.description) %>" +
+    "</td>" +
+    "<td>" +
+      "<%= escape_javascript(link_to 'Edit', list_item_path(@item.list, @item), :class=>'btn btn-mini') %> " +
+      "<%= escape_javascript(link_to 'Delete', list_item_path(@item.list, @item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' }) %>" +
+    "</td>" +
+  "</tr>").hide().fadeIn();
