@@ -10,14 +10,25 @@ class ItemsController < ApplicationController
   def index
     @items = @list.items
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { redirect_to @list }
       format.json { render json: @items }
     end
   end
 
   # GET
   def show
-    
+   respond_to do |format|
+      format.html { redirect_to @list }
+      format.js # create.js.erb
+    end   
+  end
+
+  # GET
+  def new
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.js # create.js.erb
+    end
   end
 
   # POST

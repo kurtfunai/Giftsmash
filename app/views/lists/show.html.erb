@@ -2,39 +2,57 @@
   <%= @list.title %>
   &nbsp;
   <% if can? :update, @list %>
-    <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini' %>
+    <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini list_edit' %>
   <% end %>
   <% if can? :destroy, @list %>
     <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-mini btn-danger' %></a>
   <% end %>
+  <% if can? :update, @list %>
   <%= link_to 'Back', lists_path , :class=>'btn btn-mini btn-inverse' %>
+  <% end %> 
 </h1>
 
 <p class="lead">
-  <small>Event Date: <%= @list.event_date %></small><br/>
+  <small>Event Date: <%= @list.event_date.strftime("%d-%m-%Y")  %></small><br/>
   <%= @list.description %>  
 </p>
 
 <% if can? :update, @list %>
-  <div class="well">
-    <h4>Add a List Item</h4>
-    <!--form_for([@list, Item.new], :remote => true)-->
-    <%= form_for([@list, Item.new], :remote => true) do |f| %>
-        <%= f.label :name, :class => 'control-label pull-left' %>
-        <%= f.text_field :name, :class => 'text_field  pull-left' %>
-        <%= f.label :website, :class => 'control-label  pull-left' %>
-        <%= f.text_field :url, :class => 'text_field  pull-left' %>
-        <%= f.label :description, :class => 'control-label  pull-left' %>
-        <%= f.text_area :description, :class => 'text_field  pull-left', :cols => 40, :rows => 1 %>
-      <div class="actions  pull-left">
-        <%= f.submit nil, :class => 'btn btn-primary' %>
-      </div>
-    <% end %>
-    <div class="clearfix"></div>
-  </div>
+  <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn' %><br/><br/>
 <% end %>
 
-<table id="list-items" class="table">
+
+<div id="item-bin" class="span9">
+  <% @list.items.reverse.each do |item| %>
+  <div id="item_<%= item.id %>" class="item priority-1 span3">
+    <h2><%= item.name %></h2>
+    <p><%= simple_format item.description %></p>
+    <% if can? :update, item %>
+      <%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
+    <% end %>
+    <% if can? :destroy, item %>
+      <%= link_to raw('<i class="icon-trash"></i> Delete'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <% if cannot? :update, item %>
+      www.link.com
+    <% end %>
+  </div>
+  <% end %>
+</div>
+
+<script>
+$(function(){
+  $('#item-bin').masonry({
+    // options
+    itemSelector : '.item',
+    columnWidth : 10,
+    isAnimated: !Modernizr.csstransitions,
+    isResizable: true
+  });
+});
+</script>
+<div class="clearfix"></div>
+<!--<table id="list-items" class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -44,22 +62,29 @@
     </tr>
   </thead>
   <tbody class="table-body">
-    <% @list.items.reverse.each do |item| %>
-    <tr class="item_<%= item.id %>">
-      <td><%= item.name %></td>
-      <td><a href="<%= item.url %>"><%= item.url %></a></td>
-      <td><%= item.description %></td>
-      <td>
-        <% if can? :update, item %>
-          <%= link_to 'Edit', edit_list_item_path(@list, item), :remote => true, :class=>'btn btn-mini' %>
-        <% end %>
-        <% if can? :destroy, item %>
-          <%= link_to 'Delete', list_item_path(@list, item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        <% if cannot? :update, item %>
-          www.link.com
-        <% end %>
-      </td>
+    <% if @list.items.count > 0 %>
+      <% @list.items.reverse.each do |item| %>
+      <tr class="item_<%= item.id %>">
+        <td><%= item.name %></td>
+        <td><a href="<%= item.url %>"><%= item.url %></a></td>
+        <td><%= item.description %></td>
+        <td>
+          <% if can? :update, item %>
+            <%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
+          <% end %>
+          <% if can? :destroy, item %>
+            <%= link_to raw('<i class="icon-trash"></i> Delete'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          <% if cannot? :update, item %>
+            www.link.com
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    <% else %>
+    <tr class="no-items">
+      <td colspan="4">There are currently no items on this list</td>
     </tr>
     <% end %>
   </tbody>
+</table>-->

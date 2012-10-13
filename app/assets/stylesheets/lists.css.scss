@@ -1,3 +1,31 @@
-// Place all the styles related to the Lists controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#item-bin div {
+  margin-left: 0;
+  margin-right:20px;
+}
+#item-bin .item {
+  display:inline-block;
+  float:left;
+  text-align: center;
+  background-color: #f6f6f6;
+  padding: 10px 0;
+  margin-bottom: 18px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  -box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+#item-bin .item h2 {
+  margin: 0;
+  padding: 5px;
+}
+#item-bin .priority-1 {
+  /*min-height: 160px;*/
+  background-color: #f2f2f2;
+}
+#item-bin .priority-2 {
+  background-color: #8FFF82
+  ;
+}
+#item-bin .priority-3 {
+  background-color: whitesmoke;
+}

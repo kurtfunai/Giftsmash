@@ -1,6 +1,6 @@
 <h3 class="pull-left"><i class="icon-th-list"></i> Lists</h3>
 <% if can? :create, List %>
-<%= link_to 'New List', new_list_path, :class=>'btn btn-small pull-left', :style=>'margin:16px 0 0 12px'%>
+<%= link_to 'New List', new_list_path, :class=>'btn btn-small btn-primary pull-left', :style=>'margin:16px 0 0 12px'%>
 <% end %>
 <div class="clear-fix"></div>
 <table class="table">
@@ -15,13 +15,14 @@
   <tr>
     <td><p class="lead"><%= link_to list.title, list %></p></td>
     <td><p class="lead"><%= list.description %></p></td>
-    <td><p class="lead"><%= list.event_date %></p></td>
+    <td><p class="lead"><%= list.event_date.strftime("%d-%m-%Y") %></p></td>
     <td>
+      <%= link_to raw('<i class="icon-eye-open"></i>'), list, :title=>'View', :class=>'btn btn-small' %>
       <% if can? :update, list %>
-        <%= link_to 'Edit', edit_list_path(list), :class=>'btn btn-small' %>
+        <%= link_to raw('<i class="icon-pencil"></i>'), edit_list_path(list), :title=>'Edit', :class=>'btn btn-small' %>
       <% end %>
       <% if can? :destroy, list %>
-        <%= link_to 'Destroy', list, method: :delete, :class=>'btn btn-small btn-danger', data: { confirm: 'Are you sure?' } %>
+        <%= link_to raw('<i class="icon-trash"></i>'), list, method: :delete, :title=>'Delete', :class=>'btn btn-small btn-danger', data: { confirm: 'Are you sure?' } %>
       <% end %>
     </td>  
   </tr>

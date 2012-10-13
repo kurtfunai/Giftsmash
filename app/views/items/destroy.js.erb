@@ -1,1 +1,1 @@
-$(".item_<%= escape_javascript(@item.id.to_s) %>").fadeOut("slow");
+$("#item_<%= escape_javascript(@item.id.to_s) %>").remove().after($('#item-bin').masonry( 'reload' ));

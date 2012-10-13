@@ -9,6 +9,20 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  @media (max-width: 767px) {
+      /* Remove any padding from the body */
+      body {
+        padding-top: 0;
+      }
+    }
+  @media (max-width: 480px) {
+    /* Remove padding above jumbotron */
+    body {
+      padding-top: 0;
+    }
+  }
+  </style>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -40,20 +54,33 @@
   </div>
 </div>
 
+<div class="jumbotron masthead">
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
+    <h1>Gimme Gimme</h1>
+    <!--<p>Ever have trouble planning who is buying what?</p>-->
+  <p>Are friends and family constantly bothering you for a Birthday or Christmas list?</p>
+  
 
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">×</a>
-      <%= msg %>
-    </div>
-  <% end %>
-
-  <%= yield %>
-
-  <div class="modal hide fade" id="modal-window">
-
+  <p><small>Create your list now, and share it with everyone!</small></p>
+    <p>
+    <%= link_to "Sign up now!", new_user_registration_path, :class=>"btn btn-primary btn-large" %>
+  </p>
+    
+    <!--<ul class="masthead-links">
+      <li><a href="http://github.com/twitter/bootstrap" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);">GitHub project</a></li>
+      <li><a href="./extend.html" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Extend']);">Extend</a></li>
+      <li>Version 2.1.1</li>
+    </ul>-->
   </div>
+</div>
+<div class="container">
+  <%= yield %>
 </div>
 
 </body>

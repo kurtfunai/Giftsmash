@@ -12,11 +12,13 @@
  *= require_tree .
  */
 @media (min-width: 900px) and (max-width: 1100) {
+
 }
 
 body {
   padding: 60px 0 0 0;
   /*background-image: url('../img/glyphicons-halflings.png');*/
+  background: #0f0;
 }
 
 .label a {
@@ -25,4 +27,28 @@ body {
 
 .date-select select {
   width: 100px;
+}
+
+/**** Transitions ****/
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
 }

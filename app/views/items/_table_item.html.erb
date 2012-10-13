@@ -1,7 +1,7 @@
 <td><%= @item.name %></td> 
-<td><%= @item.url %></td> 
+<td><%= link_to  @item.url %></td> 
 <td><%= @item.description %></td> 
 <td> 
-  <%= link_to 'Edit', edit_list_item_path(@list, @item), :remote => true, :class=>'btn btn-mini' %>
-  <%= link_to 'Delete', list_item_path(@item.list, @item), :remote => true, method: :delete, :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %> 
+  <%= link_to raw('<i class="icon-pencil"></i>'), edit_list_item_path(@list, @item), :remote => true, :title=>'Edit',:class=>'btn btn-mini' %>
+  <%= link_to raw('<i class="icon-trash"></i>'), list_item_path(@item.list, @item), :remote => true, method: :delete, :title=>'Edit', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %> 
 </td>
