@@ -1,14 +1,7 @@
-
 $('#modal-window').modal('hide');
 $("#new_item")[0].reset();
 $('#item-bin').prepend(
-  '<div id="item_<%= @item.id %>" class="item priority-1 span3 masonry-brick">' +
+  '<div id="item_<%= @item.id %>" class="item priority-1 span3 isotope-item">' +
     '<%= j render("div_item") %>'+
   '</div>'
-).masonry( 'reload' );
-
-/*$('.no-items').hide();
-$('.table-body').prepend(
-  "<tr class='item_<%= escape_javascript(@item.id.to_s) %>'>"+
-    "<%= j render('table_item') %>" +
-  "</tr>").hide().fadeIn();*/
+).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });

@@ -1,3 +1,4 @@
+<div class="span12">
 <h1>
   <%= @list.title %>
   &nbsp;
@@ -20,9 +21,9 @@
 <% if can? :update, @list %>
   <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn' %><br/><br/>
 <% end %>
+</div>
 
-
-<div id="item-bin" class="span9">
+<div id="item-bin" class="span12">
   <% @list.items.reverse.each do |item| %>
   <div id="item_<%= item.id %>" class="item priority-1 span3">
     <h2><%= item.name %></h2>
@@ -41,50 +42,10 @@
 </div>
 
 <script>
-$(function(){
-  $('#item-bin').masonry({
-    // options
-    itemSelector : '.item',
-    columnWidth : 10,
-    isAnimated: !Modernizr.csstransitions,
-    isResizable: true
-  });
+$('#item-bin').isotope({
+  // options
+  itemSelector : '.item',
+  layoutMode : 'masonry'
 });
 </script>
 <div class="clearfix"></div>
-<!--<table id="list-items" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Website</th>
-      <th>Description</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody class="table-body">
-    <% if @list.items.count > 0 %>
-      <% @list.items.reverse.each do |item| %>
-      <tr class="item_<%= item.id %>">
-        <td><%= item.name %></td>
-        <td><a href="<%= item.url %>"><%= item.url %></a></td>
-        <td><%= item.description %></td>
-        <td>
-          <% if can? :update, item %>
-            <%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
-          <% end %>
-          <% if can? :destroy, item %>
-            <%= link_to raw('<i class="icon-trash"></i> Delete'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          <% if cannot? :update, item %>
-            www.link.com
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    <% else %>
-    <tr class="no-items">
-      <td colspan="4">There are currently no items on this list</td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>-->
