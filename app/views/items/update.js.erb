@@ -1,3 +1,3 @@
 $('#modal-window').modal('hide');
 $("#item_<%= escape_javascript(@item.id.to_s) %>").html('<%= j render("div_item") %>');
-$('#item-bin').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+$('#item-bin').isotope( 'reloadItems' ).isotope({ sortBy: 'name' });

@@ -4,4 +4,4 @@ $('#item-bin').prepend(
   '<div id="item_<%= @item.id %>" class="item priority-1 span3 isotope-item">' +
     '<%= j render("div_item") %>'+
   '</div>'
-).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+).isotope( 'reloadItems' ).isotope({ sortBy: 'name' });

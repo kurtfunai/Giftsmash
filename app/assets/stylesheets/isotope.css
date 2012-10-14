@@ -72,12 +72,6 @@ body {
   height: 100%;
 }
 
-#container {
-  border: 1px solid #666;
-  padding: 5px;
-  margin-bottom: 20px;
-}
-
 .element {
   width: 110px;
   height: 110px;
