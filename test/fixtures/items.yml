@@ -4,8 +4,10 @@ one:
   name: MyString
   url: MyString
   description: MyText
+  list_id: 1
 
 two:
   name: MyString
   url: MyString
   description: MyText
+  list_id: 2

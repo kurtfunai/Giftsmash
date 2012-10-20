@@ -11,21 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-
-$('#item-bin').isotope({
-  // options
-  itemSelector : '.item',
-  layoutMode : 'masonry',
-
-  getSortData : {
-    name : function ( $elem ) {
-      return $elem.find('.item-name').text().toLowerCase();
-    }
-  },
-
-  sortBy : 'name'
-});
