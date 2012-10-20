@@ -1,7 +1,7 @@
 $('#modal-window').modal('hide');
 $("#new_item")[0].reset();
 $('#item-bin').prepend(
-  '<div id="item_<%= @item.id %>" class="item priority-1 span3 isotope-item">' +
+  '<div id="item_<%= @item.id %>" class="item priority-<%= @item.priority %> span3 isotope-item">' +
     '<%= j render("div_item") %>'+
   '</div>'
 ).isotope( 'reloadItems' ).isotope({ sortBy: 'name' });

@@ -1,42 +1,72 @@
 <div class="span12">
-<h1>
-  <%= @list.title %>
-  &nbsp;
+  <h1>
+    <%= @list.title %>
+    &nbsp;
+    <% if can? :update, @list %>
+      <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini list_edit' %>
+    <% end %>
+    <% if can? :destroy, @list %>
+      <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-mini btn-danger' %></a>
+    <% end %>
+    <% if can? :update, @list %>
+    <%= link_to 'Back', lists_path , :class=>'btn btn-mini btn-inverse' %>
+    <% end %> 
+  </h1>
+
+  <p class="lead">
+    <small>Event Date: <%= @list.event_date.strftime("%d-%m-%Y")  %></small><br/>
+    <%= @list.description %>  
+  </p>
+
   <% if can? :update, @list %>
-    <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini list_edit' %>
+    <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn' %><br/><br/>
   <% end %>
-  <% if can? :destroy, @list %>
-    <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-mini btn-danger' %></a>
-  <% end %>
-  <% if can? :update, @list %>
-  <%= link_to 'Back', lists_path , :class=>'btn btn-mini btn-inverse' %>
-  <% end %> 
-</h1>
 
-<p class="lead">
-  <small>Event Date: <%= @list.event_date.strftime("%d-%m-%Y")  %></small><br/>
-  <%= @list.description %>  
-</p>
-
-<% if can? :update, @list %>
-  <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn' %><br/><br/>
-<% end %>
-
-<div id="sort-by">
-  <a href="#name">name</a>
-  <a href="#priority">priority</a>
-  <a href="#height">height</a>
-  <a href="#random">mixed</a>
-  <a href="original-order">original</a>
-</div>
-<div class="clearfix"></div>
-
+  <div class="span5">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <ul id="sort-by" class="nav nav-pills">
+          <li class="active"><a href="#name">Name</a></li>
+          <li><a href="#priority">Priority</a></li>
+          <li><a href="#height">Height</a></li>
+          <li><a href="#random">Mixed</a></li>
+          <li><a href="#original-order">Newest</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <ul id="filters" class="nav  nav-pills ">
+          <li class="active"><a href="#" data-filter="*">All Items</a></li>
+          <li><a href="#" data-filter=".priority-4">Really Want</a></li>
+          <li><a href="#" data-filter=".priority-3">Want</a></li>
+          <li><a href="#" data-filter=".priority-2">Necessity</a></li>
+          <li><a href="#" data-filter=".priority-1, .priority-0">Nice to Have</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <ul id="sort-direction" class="nav nav-pills option-set" data-option-key="sortAscending">
+          <li class="active"><a href="#" data-option-value="true">Ascending</a></li>
+          <li><a href="#" data-option-value="false" class="">Descending</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </div>
 
 <div id="item-bin" class="span12">
-  <% @list.items.reverse.each do |item| %>
-  <div id="item_<%= item.id %>" class="item priority-1 span3" data-priority="<%= item.id %>">
-    <h3 class="item-name"><%= item.name %></h3>
+  <% @list.items.order('id ASC').reverse.each do |item| %>
+  <div id="item_<%= item.id %>" class="item priority-<%= item.priority %> span3" data-priority="<%= item.priority %>">
+    <div class="title">
+      <%= item.name %>
+    </div>
     <p><%= simple_format item.description %></p>
     <% if can? :update, item %>
       <%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
@@ -58,10 +88,10 @@ $('#item-bin').isotope({
 
   getSortData : {
     name : function ( $elem ) {
-      return $elem.find('.item-name').text().toLowerCase();
+      return $elem.find('.title').text().toLowerCase();
     },
     priority : function ( $elem ) {
-      return $elem.attr('data-category');
+      return $elem.attr('data-priority');
     },
     height : function( $elem ) {
       return $elem.height();
@@ -70,10 +100,35 @@ $('#item-bin').isotope({
   sortBy : 'name',
 });
 
+// change sort by
 $('#sort-by a').click(function(){
+  // Remove Active class from other items, set it to current item
+  $('#sort-by').children().removeClass("active");
+  $(this).parent().addClass("active");
   // get href attribute, minus the '#'
   var sortName = $(this).attr('href').slice(1);
   $('#item-bin').isotope({ sortBy : sortName });
+  return false;
+});
+
+// filter items when filter link is clicked
+$('#filters a').click(function(){
+  $('#filters').children().removeClass("active");
+  $(this).parent().addClass("active");
+  // grab value from data attribute
+  var selector = $(this).attr('data-filter');
+  $('#item-bin').isotope({ filter: selector });
+  return false;
+});
+
+// change sort direction
+$('#sort-direction a').click(function(){
+  $('#sort-direction').children().removeClass("active");
+  $(this).parent().addClass("active");
+  // grab true/false value from data attribute
+  var selector = $(this).attr('data-option-value');
+  selector = selector == "true" ? true : false; // string -> bool
+  $('#item-bin').isotope({ sortAscending: selector });
   return false;
 });
 </script>

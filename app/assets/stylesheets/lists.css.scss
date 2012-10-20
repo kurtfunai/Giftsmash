@@ -1,6 +1,5 @@
 #item-bin div {
-  margin-left: 2px;
-  margin-right:20px;
+  margin-left: 22px;
 }
 #item-bin .item {
   display:inline-block;
@@ -10,22 +9,39 @@
   padding: 10px 0;
   margin-bottom: 18px;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-  -box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  -box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-#item-bin .item h2 {
+#item-bin .title {
   margin: 0;
-  padding: 5px;
+  padding: 12px 10px;
+  height:100%;
+  font-size: 22px;
+  font-weight: bold;
 }
-#item-bin .priority-1 {
-  /*min-height: 160px;*/
-  background-color: #f2f2f2;
+
+/* really want */
+#item-bin .priority-4 {
+  background-image: url('../img/star_drawn.png') !important;
+  background-repeat: no-repeat;
+  background-position: -20px -36px;
+  font-size:16px;
 }
-#item-bin .priority-2 {
-  background-color: #8FFF82
-  ;
+#item-bin .priority-4 .title {
+  background-color: #ccff00;
+  font-size: 30px;
 }
-#item-bin .priority-3 {
-  background-color: whitesmoke;
+/* want */
+#item-bin .priority-3 .title {
+  background-color: #ff9800;
+}
+/* necessity */
+#item-bin .priority-2 .title {
+  background-color: #9900ff;
+  color: #fff;
+}
+/* nice to have / new */
+#item-bin .priority-1 .title, #item-bin .priority-0 .title {
+  background-color: #FCDCE9;
 }
