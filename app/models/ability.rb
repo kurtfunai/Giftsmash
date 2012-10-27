@@ -7,7 +7,7 @@ class Ability
       can :manage, List, :user_id => user.id
       can :manage, Item, :list => { :user_id => user.id }
     else 
-      can :read, :all      
+      can :read, List      
     end
   end
 end

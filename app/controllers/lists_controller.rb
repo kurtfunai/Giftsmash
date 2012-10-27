@@ -19,6 +19,8 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
+    raise "List not accessed using Friendly Id. Given '#{params[:id]}'" if !@list.found_using_friendly_id?(params[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @list }

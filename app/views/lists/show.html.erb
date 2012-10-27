@@ -1,58 +1,46 @@
 <div class="row">
-  <div class="span8">
-    <h1>
-      <%= @list.title %>
-      &nbsp;
-      <% if can? :update, @list %>
-        <%= link_to 'Edit', edit_list_path(@list), :class=>'btn btn-mini list_edit' %>
-      <% end %>
-      <% if can? :destroy, @list %>
-        <%= link_to 'Delete', @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-mini btn-danger' %>
-      <% end %>
-      <% if can? :update, @list %>
-      <%= link_to 'Back', lists_path , :class=>'btn btn-mini btn-inverse' %>
-      <% end %> 
-    </h1>
-    Event Date: <%= @list.event_date.strftime("%d-%m-%Y")  %>
-  </div>
-  <% if can? :update, @list %>
-  <!--<div class="span6">
-    <div class="navbar">  
-      <div class="navbar-inner">
-        <ul class="nav">
-          <li class="nav-text btn-primary"><%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :style=>'color:#fff;text-shadow:none;' %></li>
-        </ul>
-        <ul id="filters" class="nav nav-pills ">
-          <li class="active"><a href="#" data-filter="*">All Items</a></li>
-          <li><a href="#" data-filter=".priority-4">Really Want</a></li>
-          <li><a href="#" data-filter=".priority-3">Want</a></li>
-          <li><a href="#" data-filter=".priority-2">Need</a></li>
-          <li><a href="#" data-filter=".priority-1, .priority-0">Like</a></li>
-        </ul>
-      </div>
+  <div class="span9">
+    <div class="page-header list-title">
+      <h1>
+        <%= @list.title %>&nbsp;
+        <small>
+          <%= @list.event_date.strftime("%B %d, %Y")  %>
+        </small>
+      </h1>
     </div>
-  </div>-->
-  <% end %>
-</div>
-<div class="row">
-  <div class="lead span6">
-    <%= simple_format @list.description %>  
   </div>
-  
-</div><!--  ends container -->
-<div class="row">
-  <div class="span8">
+  <div class="span3" style="padding-top:12px;padding-bottom:12px;">
+    <div class="pull-right">
     <% if can? :update, @list %>
-      <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn btn-primary' %>
+      <%= link_to raw('<i class="icon icon-pencil"></i> Edit List'), edit_list_path(@list), :class=>'btn btn list_edit' %>
     <% end %>
+    <% if can? :destroy, @list %>
+      <%= link_to raw('<i class="icon icon-trash"></i> Delete'), @list, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn btn-danger' %>
+    <% end %>
+  </div>
+  </div>
+</div>
 
-    <div class="btn-toolbar pull-right">
+<div class="row">  
+  <div class="lead span7" style="margin-bottom:5px;">
+    <%= simple_format @list.description %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="btn-toolbar">
+      <% if can? :update, @list %>
+        <%= link_to raw('<i class="icon-plus"></i> Add a List Item'), new_list_item_path(@list), :remote => true, :title=>'Add list item', :class=>'btn btn-primary' %>
+      <% end %>
+      
       <div id="sort-by" class="btn-group">
         <button class="btn active" data-sort-by='original-order'>Priority</button>
         <button class="btn" data-sort-by='name'>Name</button>
-        <button class="btn" data-sort-by='height'>Size</button>
+        <!--<button class="btn" data-sort-by='height'>Size</button>-->
         <button class="btn" data-sort-by='random'>Random</button>
       </div>
+
       <div id="sort-direction" class="btn-group" data-option-key="sortAscending">
         <button class="btn active" data-option-value="true"><i class="icon-arrow-up"></i></button>
         <button class="btn" data-option-value="false"><i class="icon-arrow-down"></i></button>
@@ -60,10 +48,10 @@
     </div>
   </div>
 </div>
-<div class="clearfix"></div>
+
 <div class="row">
-  <div id="item-bin" >
-    <% @list.items.order('priority DESC, name ASC').each do |item| %>
+  <div class="span12" id="item-bin">
+    <% @list.items.order('priority DESC').each do |item| %>
     <div id="item_<%= item.id %>" class="item priority-<%= item.priority %> span3" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
       <div class="title">
         <%= item.name %>
@@ -113,16 +101,6 @@ $('#sort-by button').click(function(){
   // get href attribute, minus the '#'
   var sortName = $(this).attr('data-sort-by');
   $('#item-bin').isotope({ sortBy : sortName });
-  return false;
-});
-
-// filter items when filter link is clicked
-$('#filters a').click(function(){
-  $('#filters').children().removeClass("active");
-  $(this).parent().addClass("active");
-  // grab value from data attribute
-  var selector = $(this).attr('data-filter');
-  $('#item-bin').isotope({ filter: selector });
   return false;
 });
 

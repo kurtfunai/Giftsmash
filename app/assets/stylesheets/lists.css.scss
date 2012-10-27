@@ -1,7 +1,14 @@
-#item-bin {
 
- margin-left:auto;
- margin-right:auto;
+.list-title {
+  border-bottom:none;
+  margin:0;
+}
+.list-title h1{
+ margin:0;
+ padding:0;
+}
+#item-bin {
+ margin: 8px 0 0 8px;
 }
 #item-bin div {
   margin-left: 22px;

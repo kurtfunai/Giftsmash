@@ -29,6 +29,10 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'cancan'
 
+# For Routing ( List slugs )
+gem 'friendly_id'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

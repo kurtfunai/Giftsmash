@@ -10,11 +10,10 @@
     <th>Event date</th>
     <th>Actions</th>
   </tr>
-
 <% @lists.each do |list| %>
   <tr>
-    <td><p class="lead"><%= link_to list.title, list %></p></td>
-    <td><p class="lead"><%= list.description %></p></td>
+    <td class="span3"><p class="lead"><%= link_to list.title, list %></p></td>
+    <td class="span5"><p class="lead"><%= list.description %></p></td>
     <td><p class="lead"><%= list.event_date.strftime("%d-%m-%Y") %></p></td>
     <td>
       <%= link_to raw('<i class="icon-eye-open"></i>'), list, :title=>'View', :class=>'btn btn-small' %>
