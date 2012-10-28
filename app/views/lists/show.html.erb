@@ -48,8 +48,8 @@
     </div>
   </div>
 </div>
-
 <div class="row">
+  <% if !@list.items.none? %>
   <div class="span12" id="item-bin">
     <% @list.items.order('priority DESC').each do |item| %>
     <div id="item_<%= item.id %>" class="item priority-<%= item.priority %> span3" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
@@ -67,8 +67,14 @@
         www.link.com
       <% end %>
     </div>
-    <% end %>
+    <% end %> 
   </div>
+  <% else %>
+    <div class="well span12">
+      You have no items on your list, would you like to 
+      <%= link_to raw('begin adding'), new_list_item_path(@list), :remote => true, :title=>'Add list item' %>
+      some now?</div>
+  <% end %>
 </div>
 <script>
 $('#item-bin').isotope({

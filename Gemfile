@@ -28,6 +28,8 @@ gem "twitter-bootstrap-rails"
 # For Authentication
 gem 'devise'
 gem 'cancan'
+gem 'omniauth-twitter'
+#gem 'omniauth-facebook'
 
 # For Routing ( List slugs )
 gem 'friendly_id'

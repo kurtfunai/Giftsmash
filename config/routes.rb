@@ -1,6 +1,7 @@
 Gimmegimme::Application.routes.draw do
   
-  devise_for :users, path_names: {sign_in: "login"}
+  devise_for :users, path_names: {sign_in: "login"},
+                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :lists do
     resources :items
