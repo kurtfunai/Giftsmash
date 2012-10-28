@@ -1,3 +1,8 @@
+<style>
+body {
+  background-image: url('../img/bg/norwegian_rose.png') !important;
+}
+</style>
 <div class="row">
   <div class="span9">
     <div class="page-header list-title">
@@ -70,7 +75,8 @@
     <% end %> 
   </div>
   <% else %>
-    <div class="well span12">
+  <div class="span12" id="item-bin"></div>
+    <div id='no-items' class="well span12">
       You have no items on your list, would you like to 
       <%= link_to raw('begin adding'), new_list_item_path(@list), :remote => true, :title=>'Add list item' %>
       some now?</div>

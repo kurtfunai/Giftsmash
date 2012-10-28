@@ -11,8 +11,11 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
-      user.uid = auth.uid
-      #user.username = auth.info.nickname
+      if auth.provider == 'twitter'
+        user.uid = auth.uid
+        user.username = auth.info.nickname
+        user.email = "twitter." + auth.info.nickname + "@example.com"
+      end      
     end
   end
 
@@ -20,7 +23,12 @@ class User < ActiveRecord::Base
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
         user.attributes = params
-        user.valid?
+        #user.valid?
+        User._validators[:email].try{ |validators|
+          validators.delete_if{ |validator|
+            validator.is_a? Mongoid::Validations::UniquenessValidator
+          }
+        }
       end
     else
       super
