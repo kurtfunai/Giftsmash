@@ -31,7 +31,10 @@
   font-size: 22px;
   font-weight: bold;
 }
-
+#item-bin .description {
+  padding: 6px 6px 0 6px;
+  margin: 0;
+}
 /* really want */
 #item-bin .priority-4 {
   // background-image: url('../img/star_drawn.png') !important;
@@ -39,23 +42,23 @@
   background-position: -20px -36px;
   font-size:16px;
 }
-#item-bin .priority-4 .title {
-  background-color: #ccff00;
-  font-size: 30px;
-}
-/* want */
-#item-bin .priority-3 .title {
-  background-color: #FFBB00;
-}
-/* necessity */
-#item-bin .priority-2 .title {
-  background-color: #9900ff;
-  color: #fff;
-}
-/* nice to have / new */
-#item-bin .priority-1 .title, #item-bin .priority-0 .title {
-  background-color: #FCDCE9;
-}
+// #item-bin .priority-4 .title {
+//   background-color: #ccff00;
+//   font-size: 30px;
+// }
+// /* want */
+// #item-bin .priority-3 .title {
+//   background-color: #FFBB00;
+// }
+// /* necessity */
+// #item-bin .priority-2 .title {
+//   background-color: #9900ff;
+//   color: #fff;
+// }
+// /* nice to have / new */
+// #item-bin .priority-1 .title, #item-bin .priority-0 .title {
+//   background-color: #FCDCE9;
+// }
 
 // beach http://www.colourlovers.com/palette/2529451/b_e_a_c_h
 // #item-bin .priority-4 .title {

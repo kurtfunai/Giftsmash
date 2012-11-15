@@ -1,7 +1,9 @@
 <div class="title">
   <%= @item.name %>
 </div>
-<p><%= simple_format @item.description %></p>
+<div class="description">
+  <%= simple_format @item.description %>
+</div>
 <% if can? :update, @item %>
   <%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_list_item_path(@list, @item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
 <% end %>
