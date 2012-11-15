@@ -18,7 +18,7 @@
   text-align: center;
   background-color: #f6f6f6;
   padding: 10px 0;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   border-radius: 2px;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -34,7 +34,7 @@
 
 /* really want */
 #item-bin .priority-4 {
-  background-image: url('../img/star_drawn.png') !important;
+  // background-image: url('../img/star_drawn.png') !important;
   background-repeat: no-repeat;
   background-position: -20px -36px;
   font-size:16px;
@@ -56,3 +56,137 @@
 #item-bin .priority-1 .title, #item-bin .priority-0 .title {
   background-color: #FCDCE9;
 }
+
+// beach http://www.colourlovers.com/palette/2529451/b_e_a_c_h
+// #item-bin .priority-4 .title {
+//   background-color: #1648A3;
+//   color: #fff;
+// }
+// /* want */
+// #item-bin .priority-3 .title {
+//   background-color: #FFDF52;//FBFBB8  FAFFD4/beach original
+// }
+// /* necessity */
+// #item-bin .priority-2 .title {
+//   background-color: #FF4A4F;
+// }
+// /* nice to have / new */
+// #item-bin .priority-1 .title {
+//   background-color: #FFEE50;
+// }
+// /* unsorted */
+// #item-bin .priority-0 .title {
+//   background-color: #FBFBB8;
+// }
+
+// // hey6 http://www.colourlovers.com/palette/2529353/Hey!_6
+// #item-bin .priority-4 .title {
+//   background-color: #FFF77C;
+//   color: #111;
+// }
+// /* want */
+// #item-bin .priority-3 .title {
+//   background-color: #FFA342;
+// }
+// /* necessity */
+// #item-bin .priority-2 .title {
+//   background-color: #ACC534;
+// }
+// /* nice to have / new */
+// #item-bin .priority-1 .title {
+//   background-color: #AA1E70;
+//   color: #fff;
+// }
+// /* unsorted */
+// #item-bin .priority-0 .title {
+//   background-color: #560835;
+//   color: #fff;
+// }
+
+// floral175 http://www.colourlovers.com/palette/2529293/floral175
+// #item-bin .priority-4 .title {
+//   background-color: #FFDF5D;
+//   color: #111;
+// }
+// /* want */
+// #item-bin .priority-3 .title {
+//   background-color: #FBFBB8;
+// }
+// /* necessity */
+// #item-bin .priority-2 .title {
+//   background-color: #8E48B4;
+//   color: #fff;
+// }
+// /* nice to have / new */
+// #item-bin .priority-1 .title {
+//   background-color: #B5F259;
+//   color: #222;
+// }
+// /* unsorted */
+// #item-bin .priority-0 .title {
+//   background-color: #7EA73E;
+//   color: #fff;
+// }
+
+
+
+
+// //Sea of clouds 00:20 http://www.colourlovers.com/palette/2529123/Sea_of_clouds_00:20
+// #item-bin .priority-4 .title {
+//   background-color: #FEDF73;
+// }
+// /* want */
+// #item-bin .priority-3 .title {
+//   background-color: #FFA16B;
+// }
+// /* necessity */
+// #item-bin .priority-2 .title {
+//   background-color: #AC708C;
+//   color: #fff;
+// }
+// /* nice to have / new */
+// #item-bin .priority-1 .title {
+//   background-color: #72699E;
+//   color: #fff;
+// }
+// /* unsorted */
+// #item-bin .priority-0 .title {
+//   background-color: #202463;
+//   color: #fff;
+// }
+
+// Sea of clouds - REVERSED 00:20 http://www.colourlovers.com/palette/2529123/Sea_of_clouds_00:20
+#item-bin .priority-4 .title {
+  background-color: #202463;
+  color: #fff;
+}
+/* want */
+#item-bin .priority-3 .title {
+  background-color: #72699E;
+  color: #fff;
+}
+/* necessity */
+#item-bin .priority-2 .title {
+  background-color: #AC708C;
+  color: #fff;
+}
+/* nice to have / new */
+#item-bin .priority-1 .title {
+  background-color: #FFA16B;
+  color: #222;
+}
+/* unsorted */
+#item-bin .priority-0 .title {
+  background-color: #FEDF73;
+  color: #222;
+}
+
+/*
+OTHER OPTIONS:
+//Moment-of-Happiness http://www.colourlovers.com/palette/2529130/Moment-of-Happiness
+
+http://www.colourlovers.com/palette/2516451/King_without_Throne?widths=1
+http://www.colourlovers.com/palette/2529033/Arcob
+http://www.colourlovers.com/palette/2529001/m_u_l_t_i_c_o_l_o_r
+http://www.colourlovers.com/palette/2528964/Dog_gone_colors
+*/

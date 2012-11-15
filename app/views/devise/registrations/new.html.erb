@@ -1,22 +1,27 @@
-<h2>Sign up</h2>
+<div class="span3 offset4">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <% if f.object.email_required? %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <% if f.object.email_required? %>
+    <div><%= f.label :email %>
+    <%= f.email_field :email %></div>
+    <% end %>
+
+    <% if f.object.password_required? %>
+    <div><%= f.label :password %>
+    <%= f.password_field :password %></div>
+
+    <div><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %></div>
+    <% end %>
+
+    <div><%= f.submit "Sign up", :class=>'btn btn-primary' %></div>
   <% end %>
 
-  <% if f.object.password_required? %>
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-  <% end %>
-
-  <div><%= f.submit "Sign up", :class=>'btn btn-primary' %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
+<div class="span3" style="font-size:20px;padding-top:25px;">
+  or <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+</div>

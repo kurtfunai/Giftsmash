@@ -37,23 +37,22 @@
     <% end %>
     <h1>Giftsmash!</h1>
     <!--<p>Ever have trouble planning who is buying what?</p>-->
-    <br/>
-  <p>Being bothered for a Birthday or Christmas list?</p>
-  <p><small>Create your list now, and share it with everyone!</small></p>
-  <p>
-    <%= link_to "Sign up now!", new_user_registration_path, :class=>"btn btn-primary btn-large" %>
-  </p>
-    
-    <!--<ul class="masthead-links">
-      <li><a href="http://github.com/twitter/bootstrap" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);">GitHub project</a></li>
-      <li><a href="./extend.html" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Extend']);">Extend</a></li>
-      <li>Version 2.1.1</li>
-    </ul>-->
+    <div class="signup-wrapper">
+      <div class="signup"> 
+        <p>Being bothered for a Birthday or Christmas list?</p>
+        <p><small>Create your list, and share it with everyone!</small></p>
+        <p>
+          <%= link_to "Sign up now!", new_user_registration_path, :class=>"btn btn-primary btn-large" %>
+        </p>
+        
+        <ul class="masthead-links">
+          <li><a href="http://twitter.com/kurtfunai">Twitter</a></li>
+          <!--<li><a href="#">Facebook</a></li>-->
+          <li>Version 0.0.1</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container">
-  <%= yield %>
-</div>
-
 </body>
 </html>
