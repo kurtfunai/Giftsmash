@@ -35,6 +35,10 @@
   padding: 6px 6px 0 6px;
   margin: 0;
 }
+#item-bin .links {
+  padding: 0 6px;
+  margin: 0;
+}
 /* really want */
 #item-bin .priority-4 {
   // background-image: url('../img/star_drawn.png') !important;
@@ -176,12 +180,12 @@
 /* nice to have / new */
 #item-bin .priority-1 .title {
   background-color: #FFA16B;
-  color: #222;
+  color: #333;
 }
 /* unsorted */
 #item-bin .priority-0 .title {
   background-color: #FEDF73;
-  color: #222;
+  color: #333;
 }
 
 /*

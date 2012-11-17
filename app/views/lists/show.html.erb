@@ -70,9 +70,14 @@ body {
       <% if can? :destroy, item %>
         <%= link_to raw('<i class="icon-trash"></i> Delete'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
       <% end %>
-      <% if cannot? :update, item %>
-        www.link.com
-      <% end %>
+      <div class="links">
+        <% if !item.url.empty? %>
+          <a href="<%=item.url%>" class="btn btn-small"><i class='icon icon-globe'></i> Site</a>
+        <% end %>
+        <% if cannot? :update, item %>
+          <a href="#" class="btn btn-small">Amazon</a>
+        <% end %>
+      </div>
     </div>
     <% end %> 
   </div>
