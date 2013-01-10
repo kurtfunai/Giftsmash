@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.lists
     #@lists = List.all()
+    @title = "My Wishlists"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +21,8 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     raise "List not accessed using Friendly Id. Given '#{params[:id]}'" if !@list.found_using_friendly_id?(params[:id])
-    
+    @title = @list.title
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @list }
@@ -30,6 +32,8 @@ class ListsController < ApplicationController
   # GET /lists/new
   # GET /lists/new.json
   def new
+    @title = "New List"
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @list }
@@ -38,7 +42,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-
+    @title = "Edit List"
   end
 
   # POST /lists
