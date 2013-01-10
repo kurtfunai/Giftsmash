@@ -90,7 +90,7 @@ class ListsController < ApplicationController
     @list.destroy
 
     respond_to do |format|
-      format.html { redirect_to lists_url }
+      format.html { redirect_to lists_url, notice: 'List was deleted.'  }
       format.json { head :no_content }
     end
   end
