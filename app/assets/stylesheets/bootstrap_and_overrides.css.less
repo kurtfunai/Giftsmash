@@ -307,3 +307,280 @@
     float: none;
   }
 }
+
+
+// Cosmo 2.2.1
+// Bootswatch
+// -----------------------------------------------------
+
+
+// TYPOGRAPHY
+// -----------------------------------------------------
+
+//@import url('http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
+
+blockquote {
+
+  padding: 10px 15px;
+  background-color: @grayLighter;
+  border-left-color: @gray;
+
+  &.pull-right {
+    padding: 10px 15px;
+    border-right-color: @gray;
+  }
+
+  small {
+    color: @gray;
+  }
+}
+
+.muted {
+  color: @gray;
+}
+
+// SCAFFOLDING
+// -----------------------------------------------------
+
+// NAVBAR
+// -----------------------------------------------------
+
+.navbar {
+
+  .navbar-inner {
+    background-image: none;
+    .box-shadow(none);
+    .border-radius(0);
+  }
+
+  .brand {
+
+    &:hover {
+      color: @navbarLinkColorHover;
+    }
+  }
+
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    .box-shadow(none);
+    background-color: @navbarLinkBackgroundHover;
+  }
+
+  .nav li.dropdown.open > .dropdown-toggle,
+  .nav li.dropdown.active > .dropdown-toggle,
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    color: @white;
+
+    &:hover {
+      color: @grayLighter;
+    }
+  }
+
+  .navbar-search .search-query {
+    line-height: normal;
+  }
+
+  &-inverse {
+
+
+    .nav > .active > a,
+    .nav > .active > a:hover,
+    .nav > .active > a:focus {
+      .box-shadow(none);
+      background-color: @navbarInverseLinkBackgroundHover;
+    }
+
+    .navbar-search .search-query {
+      color: @blue;
+    }
+  }
+}
+
+div.subnav {
+
+  background-color: @grayLight;
+  background-image: none;
+  .box-shadow(none);
+  border-color: transparent;
+  .border-radius(0);
+
+  .nav {
+    background-color: transparent;
+  }
+
+  .nav > li > a {
+    border-color: transparent;
+  }
+
+  .nav > .active > a {
+    border-color: transparent;
+    background-color: transparent;
+    // border-left-width: 2px;
+    .box-shadow(none);
+    color: @grayDarker;
+
+    &:hover {
+      background-color: @black;
+      color: @white;
+    }
+  }
+
+  &-fixed {
+    top: @navbarHeight;
+  }
+}
+
+// NAV
+// -----------------------------------------------------
+
+.nav {
+
+  .open .dropdown-toggle,
+  & > li.dropdown.open.active > a:hover {
+    color: @blue;
+  }
+
+}
+
+.nav-tabs {
+
+  & > li > a {
+    .border-radius(0);
+  }
+
+  &.nav-stacked {
+
+    & > li > a:hover {
+      background-color: @blue;
+      color: @white;
+    }
+
+    & > .active > a,
+    & > .active > a:hover {
+      background-color: @white;
+      color: @gray;
+    }
+
+    & > li:first-child > a,
+    & > li:last-child > a {
+      .border-radius(0);
+    }
+  }
+}
+
+.nav-pills {
+
+  & > li > a {
+    background-color: @grayLight;
+    .border-radius(0);
+    color: @black;
+
+    &:hover {
+      background-color: @black;
+      color: @white;
+    }
+  }
+
+  & > .disabled > a,
+  & > .disabled > a:hover {
+    background-color: @grayLighter;
+    color: @grayDark;
+  }
+}
+
+.nav-list {
+
+  & > li > a {
+    color: @grayDarker;
+
+    &:hover {
+      background-color: @blue;
+      color: @white;
+      text-shadow: none;
+    }
+  }
+
+  .nav-header {
+    color: @grayDarker;
+  }
+
+  .divider {
+    background-color: @gray;
+    border-bottom: none;
+  }
+}
+
+.pagination {
+
+  ul {
+
+    .box-shadow(none);
+
+    & > li > a,
+    & > li > span {
+      margin-right: 6px;
+      color: @grayDarker;
+
+      &:hover {
+        background-color: @grayDarker;
+        color: @white;
+      }
+    }
+
+    & > li:last-child > a,
+    & > li:last-child > span {
+      margin-right: 0;
+    }
+
+    & > .active > a,
+    & > .active > span { 
+      color: @white;
+    }
+
+    & > .disabled > span,
+    & > .disabled > a,
+    & > .disabled > a:hover {
+      background-color: @grayLighter;
+      color: @grayDark;
+    }
+  }
+}
+
+.pager {
+
+  li > a,
+  li > span {
+    background-color: @grayLight;
+    border: none;
+    .border-radius(0);
+    color: @grayDarker;
+
+    &:hover {
+      background-color: @grayDarker;
+      color: @white;
+    }
+  }
+
+  .disabled > a,
+  .disabled > a:hover,
+  .disabled > span {
+    background-color: @grayLighter;
+    color: @grayDark;
+  }
+
+}
+
+.breadcrumb {
+  background-color: @grayLight;
+
+  li {
+    text-shadow: none;
+  }
+
+  .divider,
+  .active {
+    color: @grayDarker;
+    text-shadow: none;
+  }
+}
