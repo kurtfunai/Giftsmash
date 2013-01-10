@@ -9,6 +9,8 @@ Gimmegimme::Application.routes.draw do
 
   root :to => "welcome#index"
 
+  match 'lists/:id/delete' => 'lists#delete', :as => :delete_list
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

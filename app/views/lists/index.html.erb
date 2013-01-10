@@ -23,7 +23,7 @@
           <%= link_to raw('<i class="icon-pencil"></i>'), edit_list_path(list), :title=>'Edit', :class=>'btn btn-small' %>
         <% end %>
         <% if can? :destroy, list %>
-          <%= link_to raw('<i class="icon-trash"></i>'), list, method: :delete, :title=>'Delete', :class=>'btn btn-small btn-danger', data: { confirm: 'Are you sure?' } %>
+          <%= link_to raw('<i class="icon-trash"></i>'), delete_list_path(list), :title=>'Delete', :class=>'btn btn-small btn-danger'%>
         <% end %>
       </div>
 

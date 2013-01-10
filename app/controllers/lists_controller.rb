@@ -74,6 +74,15 @@ class ListsController < ApplicationController
     end
   end
 
+  # GET /lists/:id/delete
+  def delete
+    @title = "Confirm Delete List"
+    
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
