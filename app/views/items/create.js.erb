@@ -2,7 +2,5 @@ $('#modal-window').modal('hide');
 $('#no-items').remove();
 $("#new_item")[0].reset();
 $('#item-bin').prepend(
-  '<div id="item_<%= @item.id %>" class="item priority-<%= @item.priority %> span3 isotope-item">' +
-    '<%= j render("div_item") %>'+
-  '</div>'
+    '<%= j render("div_item") %>'
 ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });

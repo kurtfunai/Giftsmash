@@ -55,55 +55,13 @@ body {
 </div>
 <div class="row">
   <% if !@list.items.none? %>
-  <div class="span12" id="item-bin">
-    <% @list.items.order('priority DESC').each do |item| %>
-    <div id="item_<%= item.id %>" class="item priority-<%= item.priority %>" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
-
-      <div class="title">
-        <%= item.name %>
-      </div>
-
-      <div class="priority-icon">
-        <% if item.priority == 4 %>
-          <i class='icon icon-heart'></i>
-        <% elsif item.priority == 3 %>
-          <i class='icon icon-star'></i>
-        <% elsif item.priority == 2 %>
-          <i class='icon icon-gift'></i>
-        <% elsif item.priority == 1 %>
-          <i class='icon icon-tag'></i>
-        <% end %>
-      </div>
-      
-
-      <% if !item.description.empty? %>
-        <div class="description">
-          <%= simple_format item.description %>
-        </div>
-      <% end %>
-
-      <% if can?(:update, item) || !item.url.empty?%>
-        <div class="links pull-right">
-          <% if can? :update, item %>
-            <%= link_to raw('<i class="icon-pencil"></i>'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
-          <% end %>
-          <% if can? :destroy, item %>
-            <%= link_to raw('<i class="icon-trash"></i>'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
-          <% end %>
-
-          <% if !item.url.empty? %>
-            <a href="<%=item.url%>" target="_blank" class="btn btn-mini"><i class='icon icon-globe'></i> Site</a>
-          <% end %>
-          <% if cannot? :update, item %>
-            <!-- <a href="#" class="btn btn-small">Amazon</a> -->
-          <% end %>
-        </div>
+    <div class="span12" id="item-bin">
+      <% @list.items.order('priority DESC').each do |item| %>
+        <%= render :partial => "items/div_item", :locals => { :item => item } %>
       <% end %>
     </div>
-    <% end %> 
-  </div>
   <% else %>
-  <div class="span12" id="item-bin"></div>
+    <div class="span12" id="item-bin"></div>
     <div id='no-items' class="well span12">
       You have no items on your list, would you like to 
       <%= link_to raw('begin adding'), new_list_item_path(@list), :remote => true, :title=>'Add list item' %>
