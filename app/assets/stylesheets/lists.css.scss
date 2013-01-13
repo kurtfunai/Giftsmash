@@ -32,11 +32,11 @@
   font-weight: 300;
 }
 #item-bin .priority-icon {
-  color:#fff;
+  color:#000;
   position:fixed;
-  top:5px;
-  right: 12px;
-  opacity: 0.6;
+  bottom:5px;
+  left: -10px;
+  opacity: 0.2;
   font-size:14px;
 }
 #item-bin .description {
