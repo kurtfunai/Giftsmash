@@ -57,7 +57,7 @@ body {
   <% if !@list.items.none? %>
   <div class="span12" id="item-bin">
     <% @list.items.order('priority DESC').each do |item| %>
-    <div id="item_<%= item.id %>" class="item priority-<%= item.priority %> span3" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
+    <div id="item_<%= item.id %>" class="item priority-<%= item.priority %>" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
 
       <div class="title">
         <%= item.name %>

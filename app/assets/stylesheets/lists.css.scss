@@ -17,6 +17,7 @@
   float:left;
   text-align: center;
   background-color: #f6f6f6;
+  width: 270px;
   padding: 0;
   margin-bottom: 22px;
   border-radius: 2px;
@@ -34,8 +35,8 @@
 #item-bin .priority-icon {
   color:#000;
   position:fixed;
-  bottom:5px;
-  left: -10px;
+  bottom:-1px;
+  left: -16px;
   opacity: 0.2;
   font-size:14px;
 }
