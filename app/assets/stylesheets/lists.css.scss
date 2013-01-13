@@ -10,14 +10,14 @@
  margin: 8px 0 0 8px;
 }
 #item-bin div {
-  margin-left: 22px;
+  margin-left: 22px; /* make left margin smaller */
 }
 #item-bin .item {
   display:inline-block;
   float:left;
   text-align: center;
   background-color: #f6f6f6;
-  padding: 10px 0;
+  padding: 0;
   margin-bottom: 22px;
   border-radius: 2px;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -26,27 +26,31 @@
 }
 #item-bin .title {
   margin: 0;
-  padding: 12px 10px;
+  padding: 18px 10px;
   height:100%;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 300;
 }
 #item-bin .description {
-  padding: 6px 6px 0 6px;
+  // background-color: #0f0;
+  padding: 6px 14px 0 12px;
   margin: 0;
-  font-size:16px;
+  font-size:14px;
+  font-weight: 400;
+  font-family: "Open Sans", Arial;
 }
 #item-bin .links {
-  padding: 5px 10px 0 6px;
+  // background-color: #ff0;
+  padding: 10px 10px 10px 6px;
   margin: 0;
 }
 /* really want */
-#item-bin .priority-4 {
-  // background-image: url('../img/star_drawn.png') !important;
-  background-repeat: no-repeat;
-  background-position: -20px -36px;
-  font-size: 18px;
-}
+// #item-bin .priority-4 {
+//   // background-image: url('../img/star_drawn.png') !important;
+//   background-repeat: no-repeat;
+//   background-position: -20px -36px;
+//   font-size: 18px;
+// }
 // #item-bin .priority-4 .title {
 //   background-color: #ccff00;
 //   font-size: 30px;
@@ -181,12 +185,12 @@
 /* nice to have / new */
 #item-bin .priority-1 .title {
   background-color: #FFA16B;
-  color: #333;
+  color: #111;
 }
 /* unsorted */
 #item-bin .priority-0 .title {
   background-color: #FEDF73;
-  color: #333;
+  color: #111;
 }
 
 /*
