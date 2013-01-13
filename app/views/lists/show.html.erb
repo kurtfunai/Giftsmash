@@ -63,6 +63,19 @@ body {
         <%= item.name %>
       </div>
 
+      <div class="priority-icon">
+        <% if item.priority == 4 %>
+          <i class='icon icon-heart'></i>
+        <% elsif item.priority == 3 %>
+          <i class='icon icon-star'></i>
+        <% elsif item.priority == 2 %>
+          <i class='icon icon-gift'></i>
+        <% elsif item.priority == 1 %>
+          <i class='icon icon-tag'></i>
+        <% end %>
+      </div>
+      
+
       <% if !item.description.empty? %>
         <div class="description">
           <%= simple_format item.description %>
