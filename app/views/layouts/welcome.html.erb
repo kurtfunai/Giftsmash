@@ -24,7 +24,7 @@
   }
   </style>
 </head>
-<body>
+<body id="homepage">
   <%= render('layouts/navigation_bar') %>
 
 <div class="jumbotron masthead">
@@ -40,7 +40,7 @@
     <div class="signup-wrapper">
       <div class="signup"> 
         <p>Being bothered for a Birthday or Christmas list?</p>
-        <p><small>Create your list, and share it with everyone!</small></p>
+        <p><small>Create your list and share it with everyone!</small></p>
         <p>
           <%= link_to "Sign up now!", new_user_registration_path, :class=>"btn btn-primary btn-large" %>
         </p>
