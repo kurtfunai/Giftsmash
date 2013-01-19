@@ -4,18 +4,7 @@
 </div>
 <div class="modal-body">
 <%= form_for @item, :url => list_items_path(@list), :remote=>true, method: :post do |f| %>
-  <%= f.label :name, :class => 'control-label' %>
-  <%= f.text_field :name, :class => 'text_field' %>
-  <%= f.label :website, :class => 'control-label' %>
-  <%= f.text_field :url, :class => 'text_field' %>
-  <%= f.label :description, :class => 'control-label' %>
-  <%= f.text_area :description, :class => 'text_field', :cols => 40, :rows => 2 %>
-  <%= f.label "How much do you want this item?", :class => 'control-label' %>
-  <%= f.select :priority,  {'---'=> '0', 'Nice to have' => '1', 'Want' => '2', 'Need' => '3', 'Really Want' => '4'} %>
-  <div class="actions">
-  <%= f.submit "Save", :class=>'btn btn-primary' %>
-  <%= link_to "Cancel",'#', "data-dismiss" => "modal", :class=>'btn' %>
-  </div>
+  <%= render :partial => "form", :locals => { :f => f } %>
 <% end %>
 </div>
 <div class="modal-footer">&nbsp;</div>
