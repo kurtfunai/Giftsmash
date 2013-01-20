@@ -11,6 +11,10 @@ Gimmegimme::Application.routes.draw do
 
   match 'lists/:id/delete' => 'lists#delete', :as => :delete_list
 
+  # Amazon Affiliates
+  resource :amazon_affiliate, :only => [:search]
+  match 'amazon/search/:query' => 'amazon_affiliate#search', :as => :amazon_search
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
