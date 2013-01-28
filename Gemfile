@@ -36,6 +36,10 @@ gem 'omniauth-twitter'
 # For Routing ( List slugs )
 gem 'friendly_id'
 
+# For Amazon Affiliate API
+gem 'asin'
+gem 'httpclient'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
