@@ -42,4 +42,14 @@ class ListTest < ActiveSupport::TestCase
     assert !list.found_using_friendly_id?(list.id)
   end
 
+  test "should delete items when list is destroyed" do
+    list = lists(:one)
+    list_id = list.id
+    list.destroy
+
+    assert_raise(ActiveRecord::RecordNotFound) {
+      items = items(:one)
+    }
+  end
+
 end

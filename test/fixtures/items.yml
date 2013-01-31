@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Blueberries
   url: MyString
-  description: MyText
+  description: YummYumm
   list_id: 1
 
 two:
-  name: MyString
+  name: Strawberries
   url: MyString
-  description: MyText
+  description: Omom
   list_id: 2
+
+three:
+  name: Bananas
+  url: MyString
+  description: NomNom
+  list_id: 1

@@ -18,4 +18,5 @@ class ItemTest < ActiveSupport::TestCase
     item.list_id = nil
     assert !item.save
   end
+
 end

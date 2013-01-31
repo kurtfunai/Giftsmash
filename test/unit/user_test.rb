@@ -7,6 +7,7 @@ class UserTest < ActiveSupport::TestCase
     user.destroy
 
     lists = List.where(user_id: id)
+    #lists = lists(:one) # Which approach is better? This throws a RecordNotFound error. Could use assert_throws( symbol, [msg] ) { block }
     assert lists.empty?
   end
 end
