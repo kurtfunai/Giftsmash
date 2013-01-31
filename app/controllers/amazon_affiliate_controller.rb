@@ -2,13 +2,14 @@ class AmazonAffiliateController < ApplicationController
   require 'asin'
   include ASIN::Client
 
-  # GET
+  # GET amazon/search/{query}.json
   def search
     client = ASIN::Client.instance
-    # items = client.lookup '1430218150'
-    items = client.search :Keywords => params[:query], :SearchIndex => :All, :ResponseGroup => [ :Small, :Images ]
-    # Response Group Medium is not good for production but contains item price and many more details. 
-    # Response Group Small/Images does not include price.
+    @amazon_affiliate = AmazonAffiliate.new
+    
+    items = @amazon_affiliate.search_keyword client, params[:query]
+    items = @amazon_affiliate.parse_items items
+    
     respond_to do |format|
       format.html { redirect_to @list }
       format.json { render json: items }

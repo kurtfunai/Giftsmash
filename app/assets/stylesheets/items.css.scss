@@ -1,15 +1,29 @@
-.amazon-product-result {
+.amazon-product {
   width: 160px;
   float:left;
   display:inline-block;
   text-align: center;
   margin: 0 5px;
   padding-top:3px;
+  border:1px solid #fff;
 }
-.amazon-product-result:hover {
+.amazon-product:hover {
   background-color: #ddd;
   cursor: pointer;
+  border:1px solid #8BA2FC;
+}
+.amazon-product img {
+  max-height:120px;
+  vertical-align: center;
+  margin: auto auto;
+  display: inline-block;
 }
 .amazon-product-title {
   font-size: 12px;
+}
+.amazon-product-image {
+  height:120px;
+}
+.amazon-product img {
+
 }

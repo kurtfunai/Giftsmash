@@ -5,7 +5,20 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# For Heroku
+group :development do
+  gem 'sqlite3'
+  gem 'better_errors'
+end
+
+group :test do 
+  #gem 'factory_girl_rails', "~> 4.0"
+end
+
+group :production do
+  # For Heroku
+  gem 'pg'
+end
 
 # For Heroku
 gem 'pg'
@@ -39,7 +52,6 @@ gem 'friendly_id'
 # For Amazon Affiliate API
 gem 'asin'
 gem 'httpclient'
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

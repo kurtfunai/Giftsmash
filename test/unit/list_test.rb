@@ -32,9 +32,8 @@ class ListTest < ActiveSupport::TestCase
   end
 
   test "found using friendly id" do
-    param = '55d7cb98b79fbad510ccf60f6d565792c5a7ba12'
     list = lists(:one)
-    assert list.found_using_friendly_id?(param)
+    assert list.found_using_friendly_id?(list.slug)
   end
 
   test "not found using friendly id" do
@@ -44,7 +43,7 @@ class ListTest < ActiveSupport::TestCase
 
   test "should delete items when list is destroyed" do
     list = lists(:one)
-    list_id = list.id
+    #list_id = list.id
     list.destroy
 
     assert_raise(ActiveRecord::RecordNotFound) {
