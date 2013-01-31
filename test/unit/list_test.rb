@@ -33,7 +33,6 @@ class ListTest < ActiveSupport::TestCase
 
   test "found using friendly id" do
     param = '55d7cb98b79fbad510ccf60f6d565792c5a7ba12'
-    #list = List.find(param) #works
     list = lists(:one)
     assert list.found_using_friendly_id?(param)
   end

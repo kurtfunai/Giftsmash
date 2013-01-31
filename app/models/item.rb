@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
   belongs_to :list
   attr_accessible :description, :name, :url, :priority
-  validates :name, :presence => true
+  validates :name, :list_id, :presence => true
 end
