@@ -6,11 +6,15 @@
   margin: 0 5px;
   padding-top:3px;
   border:1px solid #fff;
+  cursor: pointer;
 }
 .amazon-product:hover {
   background-color: #ddd;
-  cursor: pointer;
   border:1px solid #8BA2FC;
+}
+.selected {
+  background-color: #ddd;
+  border:1px solid #fff; 
 }
 .amazon-product img {
   max-height:120px;

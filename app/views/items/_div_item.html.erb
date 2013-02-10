@@ -1,8 +1,6 @@
 <% 
 # If it is called from the Create partial, it will have the global @item
-if @item
-  item = @item
-end
+item = @item if @item
 %>
 <div id="item_<%= item.id %>" class="item priority-<%= item.priority %>" data-priority="<%= item.priority %>" data-id="<%= item.id %>">
   <div class="title">

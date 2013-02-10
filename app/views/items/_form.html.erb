@@ -6,6 +6,7 @@
 <%= f.text_area :description, :class => 'text_field', :cols => 40, :rows => 2 %>
 <%= f.label "How much do you want this item?", :class => 'control-label' %>
 <%= f.select :priority,  {'---'=> '0', 'Nice to have' => '1', 'Want' => '2', 'Need' => '3', 'Really Want' => '4'} %>
+<%= f.hidden_field :asin %>
 <div class="actions">
 <%= f.submit "Save", :class=>'btn btn-primary' %>
 <%= link_to "Cancel",'#', "data-dismiss" => "modal", :class=>'btn' %>

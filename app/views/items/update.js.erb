@@ -1,3 +1,5 @@
 $('#modal-window').modal('hide');
-$("#item_<%= escape_javascript(@item.id.to_s) %>").removeClass().addClass('item priority-<%= @item.priority %>  span3 isotope-item').html('<%= j render("div_item") %>');
-$('#item-bin').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+$("#item_<%= escape_javascript(@item.id.to_s) %>").remove()
+$('#item-bin').prepend(
+    '<%= j render("div_item") %>'
+).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });

@@ -25,4 +25,14 @@ class AmazonAffiliateController < ApplicationController
       format.json { render json: items }
     end
   end
+
+  # GET amazon/lookup/{asin}.json
+  def lookup
+    client = ASIN::Client.instance
+    items = client.lookup URI::escape params[:asin] #demo of multiple item lookup.
+    
+    respond_to do |format|
+      format.json { render json: items }
+    end
+  end
 end
