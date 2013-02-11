@@ -17,5 +17,8 @@
 # Ignore database file
 /config/database.yml
 
+# Ignore deploy file
+/config/deploy.rb
+
 .DS_Store
 .idea

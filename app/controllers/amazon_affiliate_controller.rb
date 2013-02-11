@@ -11,7 +11,6 @@ class AmazonAffiliateController < ApplicationController
     items = @amazon_affiliate.parse_items items
     
     respond_to do |format|
-      format.html { redirect_to @list }
       format.json { render json: items }
     end
   end
@@ -19,7 +18,7 @@ class AmazonAffiliateController < ApplicationController
   # POST amazon/query
   def query
     client = ASIN::Client.instance
-    items = client.lookup URI::escape'B003O6JKLC,1430218150' #demo of multiple item lookup.
+    items = client.lookup ['1430218150','1934356549'] #demo of multiple item lookup.
     
     respond_to do |format|
       format.json { render json: items }
