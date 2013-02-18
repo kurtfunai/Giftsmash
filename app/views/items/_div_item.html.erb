@@ -29,7 +29,7 @@ item = @item if @item
     </div>
   <% end %>
 
-  <% if can?(:update, item) || !item.url.empty?%>
+  <% if can?(:update, item) || !item.url.empty? || item.asin.present?%>
     <div class="links pull-right">
       <% if can? :update, item %>
         <%= link_to raw('<i class="icon-pencil"></i>'), edit_list_item_path(@list, item), :remote => true, :title=>'Edit', :class=>'btn btn-mini' %>
@@ -41,8 +41,9 @@ item = @item if @item
       <% if !item.url.empty? %>
         <a href="<%=item.url%>" target="_blank" class="btn btn-mini"><i class='icon icon-globe'></i> Site</a>
       <% end %>
-      <% if cannot? :update, item %>
-        <!-- <a href="#" class="btn btn-small">Amazon</a> -->
+      
+      <% if item.asin.present? %>
+        <a href="" class="amazon-link btn btn-mini" id="<%=item.asin%>-link" title="Buy on Amazon" target="_blank">Buy</a>
       <% end %>
     </div>
   <% end %>

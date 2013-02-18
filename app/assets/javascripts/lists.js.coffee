@@ -1,9 +1,10 @@
+# Choose Amazon Product from list of images
 chooseProduct = (object) ->
   $('.amazon-product').each(->
       $(this).removeClass('selected')
     )
   object.addClass('selected')
-  $('#item_asin').val(object.attr('data-asin'))
+  $('#item_asin').val(object.attr('data-asin')) # Set value in form
   
 
 # Creates the HTML for an individual amazon product
@@ -32,6 +33,7 @@ showProductMatches = (data) ->
     )
   $('#modal-footer').html(productsHTML)
 
+# Query backend for Amazon Products
 getProductImages = (asins)->
   if asins.length > 0
     query = asins.join(',')
@@ -40,16 +42,16 @@ getProductImages = (asins)->
         showProductImages(data)
         )
 
+# Render Product images if found for each ASIN
 showProductImages = (asins)->
   $('.asin').each(->
       productAsin = $(this).attr('id')
-      if typeof(asins[productAsin]) != 'undefined' && typeof(asins[productAsin].MediumImage) != 'undefined'
-        $(this).html('<img src="'+asins[productAsin].MediumImage.URL+'"/>')
+      if typeof(asins[productAsin]) != 'undefined' 
+        if typeof(asins[productAsin].MediumImage) != 'undefined'
+          $(this).html('<img src="'+asins[productAsin].MediumImage.URL+'"/>')
+        # Change Link to Amazon
+        $('#'+productAsin+'-link').attr('href',asins[productAsin].DetailPageURL)
     )
-
-say = (what)->
-  alert(what)
-
 
 #Jquery Onload
 jQuery ->      
