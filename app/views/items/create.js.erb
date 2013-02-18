@@ -4,3 +4,10 @@ $("#new_item")[0].reset();
 $('#item-bin').prepend(
     '<%= j render("div_item") %>'
 ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+
+$('#item-bin').trigger('itemAdded',['<%= @item.id %>','<%= @item.asin if @item.asin.present? %>']);
+
+<% if @item.asin.present? %>
+var asin = ['<%=@item.asin%>'];
+getProductImages(asin);
+<% end %>
