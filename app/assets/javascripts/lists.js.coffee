@@ -70,7 +70,9 @@ jQuery ->
 
   showProductImages = (asins)->
     $('.asin').each(->
-        $(this).html('<img src="'+asins[$(this).attr('id')].MediumImage.URL+'"/>')
+        productAsin = $(this).attr('id')
+        if typeof(asins[productAsin]) != 'undefined' && typeof(asins[productAsin].MediumImage) != 'undefined'
+          $(this).html('<img src="'+asins[productAsin].MediumImage.URL+'"/>')
       )
       
 # Get All Amazon Images and display them in items - Happens on page load
