@@ -14,4 +14,12 @@ class AmazonAffiliate
     
     return items_with_image.slice(0,3) # only return 3 images for now
   end
+
+  def format_results items
+    formatted_items = {}
+    items.each do |item|
+      formatted_items[item.raw.ASIN] = item.raw if item.raw.SmallImage
+    end
+    return formatted_items # only return 3 images for now
+  end
 end

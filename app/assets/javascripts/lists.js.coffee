@@ -54,10 +54,28 @@ jQuery ->
 
   # Show Amazon product matches
   showProductMatches = (data) ->
-    console.log(data)
     productsHTML = []
     data.forEach((result)->
-        # console.log(result.raw)
-        productsHTML.push(createProductHTML(result.raw))
+        productsHTML.push(createProductHTML(result))
       )
     modalFooter.html(productsHTML)
+
+  getProductImages = (asins)->
+    if asins.length > 0
+      query = asins.join(',')
+      if query 
+        $.getJSON('/amazon/query/'+query+'.json',(data)->
+          showProductImages(data)
+          )
+
+  showProductImages = (asins)->
+    $('.asin').each(->
+        $(this).html('<img src="'+asins[$(this).attr('id')].MediumImage.URL+'"/>')
+      )
+      
+# Get All Amazon Images and display them in items - Happens on page load
+  asins = []
+  $('.asin').each(->
+      asins.push($(this).attr('id'))
+    )
+  getProductImages(asins)

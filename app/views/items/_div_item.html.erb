@@ -7,6 +7,10 @@ item = @item if @item
     <%= item.name %>
   </div>
 
+  <% if item.asin.present? %>
+    <div id="<%=item.asin%>" class="asin"></div>
+  <% end %>
+
   <div class="priority-icon">
     <% if item.priority == 4 %>
       <i class='icon icon-heart'></i>

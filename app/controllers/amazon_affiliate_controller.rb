@@ -18,7 +18,10 @@ class AmazonAffiliateController < ApplicationController
   # POST amazon/query
   def query
     client = ASIN::Client.instance
-    items = client.lookup ['1430218150','1934356549'] #demo of multiple item lookup.
+    @amazon_affiliate = AmazonAffiliate.new
+    #items = client.lookup ['1430218150','1934356549'] #demo of multiple item lookup.
+    items = client.lookup params[:asins]
+    items = @amazon_affiliate.format_results items
     
     respond_to do |format|
       format.json { render json: items }
