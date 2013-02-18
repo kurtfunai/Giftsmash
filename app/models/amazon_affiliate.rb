@@ -9,7 +9,7 @@ class AmazonAffiliate
   def parse_items items
     items_with_image = []
     items.each do |item|
-      items_with_image << item if item.raw.SmallImage
+      items_with_image << item.raw if item.raw.SmallImage
     end
     
     return items_with_image.slice(0,3) # only return 3 images for now
