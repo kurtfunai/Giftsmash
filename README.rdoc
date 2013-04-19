@@ -2,3 +2,17 @@ Gimme Gimme
 ===========
 
 A gift list application!
+
+This was a fun project that I began to get a little more familiar with Rails.
+It's not intended for production use.
+
+Visible at:
+http://giftsmash.com
+
+To preview a list: http://giftsmash.com/lists/73754921b8c2c37e84f54e58951fc46128f33a1a
+
+Product images and information are pulled in from Amazon's Affiliate* API
+
+---
+
+* Heads up, purchase links currently add on affiliate code for Giftsmash

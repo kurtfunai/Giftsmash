@@ -1,19 +1,32 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+
+toy_truck:
+  name: Toy Truck
+  url: 
+  description: Red Fire Truck
+  list: kurt_bday_list
+
+blueberries:
   name: Blueberries
-  url: MyString
+  url: 
   description: YummYumm
-  list_id: 1
+  list: kurt_bday_list
 
-two:
+strawberries:
   name: Strawberries
-  url: MyString
+  url: 
   description: Omom
-  list_id: 2
+  list: kurt_bday_list
 
-three:
+bananas:
   name: Bananas
-  url: MyString
+  url: 
   description: NomNom
-  list_id: 1
+  list: kurt_bday_list
+
+cat:
+  name: Cat
+  url: 
+  description: Blue Ragdoll
+  list: ryan_xmas_list

@@ -8,7 +8,6 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = current_user.lists
-    #@lists = List.all()
     @title = "My Wishlists"
 
     respond_to do |format|

@@ -38,7 +38,7 @@ item = @item if @item
         <%= link_to raw('<i class="icon-trash"></i>'), list_item_path(@list, item), :remote => true, method: :delete, :title=>'Delete', :class=>'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
       <% end %>
 
-      <% if !item.url.empty? %>
+      <% if item.url %>
         <a href="<%=item.url%>" target="_blank" class="btn btn-mini"><i class='icon icon-globe'></i> Site</a>
       <% end %>
       

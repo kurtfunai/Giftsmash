@@ -1,53 +1,48 @@
 require 'test_helper'
 
 class ListTest < ActiveSupport::TestCase
+  def setup
+    @kurt_bday_list = lists(:kurt_bday_list)
+    @new_list = List.new
+  end
 
   test "should not save without title and user" do
-    list = List.new
-    assert !list.save
+    assert !@new_list.valid?
+    assert @new_list.errors[:title].any?
+    assert @new_list.errors[:user_id].any?
   end
 
   test "save list with title and user" do
-    user = users(:kurt)
-    list = List.new
-    list.title = "My list!"
-    list.user = user
+    @new_list.title = "My list!"
+    @new_list.user = users(:kurt)
 
-    assert list.save
+    assert @new_list.save
   end
 
   test "create list slug" do
-    list = lists(:one)
-    assert_not_nil list.date_and_user_id()
+    assert_not_nil @kurt_bday_list.date_and_user_id()
   end
 
   test "should generate friendly id" do 
-    list = List.new
-    assert list.should_generate_new_friendly_id?
+    assert @new_list.should_generate_new_friendly_id?
   end
 
   test "should not generate friendly id" do
-    list = lists(:one)
-    assert !list.should_generate_new_friendly_id?
+    assert !@kurt_bday_list.should_generate_new_friendly_id?
   end
 
   test "found using friendly id" do
-    list = lists(:one)
-    assert list.found_using_friendly_id?(list.slug)
+    assert @kurt_bday_list.found_using_friendly_id?(@kurt_bday_list.slug)
   end
 
   test "not found using friendly id" do
-    list = lists(:one)
-    assert !list.found_using_friendly_id?(list.id)
+    assert !@kurt_bday_list.found_using_friendly_id?(@kurt_bday_list.id)
   end
 
   test "should delete items when list is destroyed" do
-    list = lists(:one)
-    #list_id = list.id
-    list.destroy
-
+    @kurt_bday_list.destroy
     assert_raise(ActiveRecord::RecordNotFound) {
-      items = items(:one)
+      items(:toy_truck)
     }
   end
 

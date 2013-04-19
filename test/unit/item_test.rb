@@ -1,22 +1,15 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  test "should not save without name" do
-    item = items(:one)
-    item.name = nil
-    assert !item.save
+  def setup
+    @toy_truck = items(:toy_truck)
+    @new_item = Item.new
   end
 
-  test "should save with name" do
-    item = items(:one)
-    item.name = "My List"
-    assert item.save
-  end
-
-  test "should not save without list" do
-    item = items(:one)
-    item.list_id = nil
-    assert !item.save
+  test "should not save without attributes" do
+    assert !@new_item.valid?
+    assert @new_item.errors[:name].any?
+    assert @new_item.errors[:list_id].any?
   end
 
 end

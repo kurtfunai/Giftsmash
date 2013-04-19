@@ -9,6 +9,11 @@ gem 'rails', '3.2.13'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
+
+  # Guard
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i 
+  gem 'guard-test'
+  gem 'guard-livereload'
 end
 
 group :test do 
