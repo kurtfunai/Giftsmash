@@ -1,0 +1,18 @@
+mail_from: "me@example.com"
+secret_token: 'application-secret-token-1234'
+
+list_slug_salt: "secret_slug"
+
+asin_secret: 'associate secret'
+asin_key: 'associate key'
+asin_associate_tag: 'amazon-associate-tag'
+
+development:
+  twitter_consumer_key: 'twitter-key'
+  twitter_consumer_secret: 'twitter-secret'
+test:
+  twitter_consumer_key: 'twitter-key'
+  twitter_consumer_secret: 'twitter-secret'
+production:
+  twitter_consumer_key: 'twitter-key'
+  twitter_consumer_secret: 'twitter-secret'

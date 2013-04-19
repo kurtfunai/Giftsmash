@@ -1,4 +1,4 @@
-Gimme Gimme
+Giftsmash
 ===========
 
 A gift list application!
@@ -11,8 +11,12 @@ http://giftsmash.com
 
 To preview a list: http://giftsmash.com/lists/73754921b8c2c37e84f54e58951fc46128f33a1a
 
+Installation
+------------
+
+If installing locally, don't forget to set the environment variables in application.yml 
+cp config/application.yml config/application.example.yml
+
+Heads Up:
 Product images and information are pulled in from Amazon's Affiliate* API
-
----
-
-* Heads up, purchase links currently add on affiliate code for Giftsmash
+purchase links currently add on affiliate code for Giftsmash

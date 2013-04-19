@@ -22,3 +22,6 @@
 
 .DS_Store
 .idea
+
+# Ignore Environment Variable File
+/config/application.yml
