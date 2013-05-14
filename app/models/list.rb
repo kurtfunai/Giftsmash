@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :date_and_user_id, use: :slugged
 
-  attr_accessible :description, :event_date, :title, :user
+  attr_accessible :description, :event_date, :title
   belongs_to :user
   has_many :items, :dependent => :destroy
   validates :title, :user_id, :presence => true
