@@ -1,16 +1,22 @@
 <div class="span3 offset4">
   <h2>Sign in</h2>
 
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.label :email %>
-    <%= f.email_field :email %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-inline' }) do |f| %>
+    <div class="control-group">
+      <div><%= f.label :email, :class => 'control-label' %>
+      <div class="controls"><%= f.email_field :email, :autofocus => true, :class => 'text_field' %></div></div>
+    </div>
 
-    <div><%= f.label :password %>
-    <%= f.password_field :password %></div>
+    <div class="control-group">
+      <div><%= f.label :password, :class => 'control-label' %>
+      <div class="controls"><%= f.password_field :password, :class => 'text_field' %></div></div>
+    </div>  
 
+    <div class="control-group">
     <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :class=>''%> </div>
     <% end -%>
+    </div> 
 
     <div><%= f.submit "Sign in", :class=>'btn btn-primary' %></div>
   <% end %>
