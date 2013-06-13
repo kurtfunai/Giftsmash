@@ -3,7 +3,10 @@ require 'test_helper'
 class ListTest < ActiveSupport::TestCase
   def setup
     @kurt_bday_list = lists(:kurt_bday_list)
-    @new_list = List.new
+    @new_list = List.new({
+      title: "My awesome new list!"
+      user: users(:kurt)
+      })
   end
 
   test "should not save without title and user" do
@@ -13,10 +16,7 @@ class ListTest < ActiveSupport::TestCase
   end
 
   test "save list with title and user" do
-    @new_list.title = "My list!"
-    @new_list.user = users(:kurt)
-
-    assert @new_list.save
+    assert @new_list.valid?
   end
 
   test "create list slug" do

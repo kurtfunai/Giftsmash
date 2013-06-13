@@ -15,10 +15,11 @@ class UserTest < ActiveSupport::TestCase
     } 
   end
 
-  test "user can only delete lists that he owns" do
-    assert @ability.can?(:destroy, List.new(:user => @user))
-    assert @ability.cannot?(:destroy, List.new)
-  end
+  # test "user can only delete lists that he owns" do
+    
+  #   assert @ability.can?(:destroy, List.new(:user => @user))
+  #   assert @ability.cannot?(:destroy, List.new)
+  # end
 
   test "user can only delete items that he owns" do
     item = items(:toy_truck)

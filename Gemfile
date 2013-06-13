@@ -16,7 +16,9 @@ group :development do
 end
 
 group :test do 
-  #gem 'factory_girl_rails', "~> 4.0"
+  # API testing
+  gem 'webmock', '~> 1.9.0'
+  gem 'vcr'
 end
 
 group :production do

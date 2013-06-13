@@ -15,7 +15,7 @@ Gimmegimme::Application.routes.draw do
   resource :amazon_affiliate, :only => [:search, :query]
   match 'amazon/search/:query' => 'amazon_affiliate#search', :as => :amazon_search
   match 'amazon/lookup/:asin' => 'amazon_affiliate#lookup', :as => :amazon_lookup
-  match 'amazon/query/:asins' => 'amazon_affiliate#query', :as => :amazon_query
+  match 'amazon/query/:asins' => 'amazon_affiliate#get_all', :as => :amazon_query
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
