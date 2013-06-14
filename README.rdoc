@@ -1,5 +1,6 @@
 Giftsmash
 ===========
+[![Code Climate](https://codeclimate.com/github/kurtfunai/Giftsmash.png)](https://codeclimate.com/github/kurtfunai/Giftsmash)
 
 A gift list application!
 

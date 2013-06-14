@@ -21,6 +21,13 @@ group :test do
   gem 'vcr'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'pry'
+  gem 'pry-remote'
+end
+
 group :production do
   gem 'mysql2'
 end
