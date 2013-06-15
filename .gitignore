@@ -25,3 +25,6 @@
 
 # Ignore Environment Variable File
 /config/application.yml
+
+# Coveralls
+coverage

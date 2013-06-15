@@ -1,6 +1,6 @@
 Giftsmash
 ===========
-[![Build Status](https://travis-ci.org/kurtfunai/Giftsmash.png?branch=master)](https://travis-ci.org/kurtfunai/Giftsmash) [![Code Climate](https://codeclimate.com/github/kurtfunai/Giftsmash.png)](https://codeclimate.com/github/kurtfunai/Giftsmash)
+[![Build Status](https://travis-ci.org/kurtfunai/Giftsmash.png?branch=master)](https://travis-ci.org/kurtfunai/Giftsmash) [![Code Climate](https://codeclimate.com/github/kurtfunai/Giftsmash.png)](https://codeclimate.com/github/kurtfunai/Giftsmash) [![Coverage Status](https://coveralls.io/repos/kurtfunai/Giftsmash/badge.png?branch=master)](https://coveralls.io/r/kurtfunai/Giftsmash?branch=master)
 
 A gift list application!
 

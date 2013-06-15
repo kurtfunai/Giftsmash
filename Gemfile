@@ -47,6 +47,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'coveralls', require: false
+
 # Design
 gem "twitter-bootstrap-rails"
 
