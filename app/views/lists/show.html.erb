@@ -9,7 +9,7 @@ body {
       <h1>
         <%= @list.title %>&nbsp;
         <small>
-          <%= @list.event_date.strftime("%B %d, %Y")  %>
+          <%= @list.event_date.strftime("%B %d, %Y") if @list.event_date.present? %>
         </small>
       </h1>
     </div>
