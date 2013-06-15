@@ -1,5 +1,5 @@
 mail_from: "me@example.com"
-secret_token: 'application-secret-token-1234'
+secret_token: 'secretsecretsecretsecretsecretsecretsecretsecretsecretsecret'
 
 list_slug_salt: "secret_slug"
 

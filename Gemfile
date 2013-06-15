@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite3'
   gem 'better_errors'
 
   # Guard
@@ -17,11 +16,13 @@ end
 
 group :test do 
   # API testing
+  gem 'rake'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr'
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry'
