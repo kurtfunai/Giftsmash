@@ -4,7 +4,8 @@ FactoryGirl.define do
   factory :list do
     title "Birthday List"
     description "Its going to be a banging good time"
-    
-    association :user 
+    event_date Time.now
+
+    association :user
   end
 end

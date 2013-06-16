@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
   attr_accessible :description, :event_date, :title
   belongs_to :user
   has_many :items, :dependent => :destroy
-  validates :title, :user_id, :presence => true
+  validates :title, :event_date, :user_id, :presence => true
 
   # When creating a list, set the slug to be a sha1 hash of Time.new + user_id 
   def date_and_user_id
