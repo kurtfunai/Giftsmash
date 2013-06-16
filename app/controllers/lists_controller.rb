@@ -1,53 +1,47 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  
-  # CanCan Method : This loads all resources, ex: @list = List.find(params[:id]) is no longer necessary
-  load_and_authorize_resource 
 
-  # GET /lists
-  # GET /lists.json
+  load_and_authorize_resource
+
   def index
     @lists = current_user.lists
+    # TODO (ps) the title are used for HTML only.
+    # that's why you often use `content_for` blocks in your templates instead of setting it in the controller
     @title = "My Wishlists"
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @lists }
     end
   end
 
-  # GET /lists/1
-  # GET /lists/1.json
   def show
+    # TODO (ps) put me in a before filter and redirect somewhere with flash message instead of raising an error
     raise "List not accessed using Friendly Id. Given '#{params[:id]}'" if !@list.found_using_friendly_id?(params[:id])
     @title = @list.title
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @list }
     end
   end
 
-  # GET /lists/new
-  # GET /lists/new.json
   def new
     @title = "New List"
-    
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @list }
     end
   end
 
-  # GET /lists/1/edit
   def edit
     @title = "Edit List"
   end
 
-  # POST /lists
-  # POST /lists.json
   def create
-    @list[:user_id] = current_user.id # @todo Is this necessary?
+    @list.user = current_user
+    # TODO (ps) have a look at `respond_with` that does a lot of what you are doing here for free
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
@@ -59,8 +53,6 @@ class ListsController < ApplicationController
     end
   end
 
-  # PUT /lists/1
-  # PUT /lists/1.json
   def update
     respond_to do |format|
       if @list.update_attributes(params[:list])
@@ -73,23 +65,20 @@ class ListsController < ApplicationController
     end
   end
 
-  # GET /lists/:id/delete
   def delete
     @title = "Confirm Delete List"
-    
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
     end
   end
 
-  # DELETE /lists/1
-  # DELETE /lists/1.json
   def destroy
     @list = List.find(params[:id])
     @list.destroy
 
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was deleted.'  }
+      format.html { redirect_to lists_url, notice: 'List was deleted.' }
       format.json { head :no_content }
     end
   end
