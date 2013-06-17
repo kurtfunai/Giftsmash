@@ -3,9 +3,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   def self.from_omniauth(auth)
@@ -15,7 +14,7 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         user.username = auth.info.nickname
         user.email = "twitter." + auth.info.nickname + "@example.com"
-      end      
+      end
     end
   end
 
@@ -23,7 +22,6 @@ class User < ActiveRecord::Base
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
         user.attributes = params
-        #user.valid?
         User._validators[:email].try{ |validators|
           validators.delete_if{ |validator|
             validator.is_a? Mongoid::Validations::UniquenessValidator

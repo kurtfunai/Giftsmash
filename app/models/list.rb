@@ -7,7 +7,7 @@ class List < ActiveRecord::Base
   has_many :items, :dependent => :destroy
   validates :title, :event_date, :user_id, :presence => true
 
-  # When creating a list, set the slug to be a sha1 hash of Time.new + user_id 
+  # When creating a list, set the slug to be a sha1 hash of Time.new + user_id
   def date_and_user_id
     self.slug = Digest::SHA1.hexdigest(Time.now.to_s + self.user_id.to_s + CONFIG[:list_slug_salt])
   end

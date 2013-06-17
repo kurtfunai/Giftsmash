@@ -1,12 +1,9 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!
 
-  # CanCan : Load as nested resource
-  load_and_authorize_resource :list#, :instance_name => :list, :class => 'List'
+  load_and_authorize_resource :list
   load_and_authorize_resource :item, :through => :list
-  #skip_authorize_resource :only => :show
 
-  # GET
   def index
     @items = @list.items
     respond_to do |format|
@@ -15,45 +12,40 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET
   def show
-   respond_to do |format|
-      format.html { redirect_to @list }
-      format.js # create.js.erb
-    end   
-  end
-
-  # GET
-  def new
     respond_to do |format|
       format.html { redirect_to @list }
-      format.js # create.js.erb
+      format.js
     end
   end
 
-  # POST
+  def new
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.js
+    end
+  end
+
   def create
     @item = @list.items.create params[:item]
     respond_to do |format|
       format.html { redirect_to @list }
-      format.js # create.js.erb
+      format.js
     end
   end
 
-  # GET
   def edit
     respond_to do |format|
       format.html { redirect_to @list }
-      format.js # edit.js.erb
+      format.js
     end
   end
 
-  # PUT
   def update
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.js # update.js.erb
+        format.js
       else
         format.html { render action: "edit" }
         format.js
@@ -61,7 +53,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE
   def destroy
     @item.destroy
 
