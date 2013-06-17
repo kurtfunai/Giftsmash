@@ -103,9 +103,11 @@ describe ListsController do
         response.status.should be(200)
       end
 
-      it "raises an error when list is not accesed via slug" do
+      it "redirects home when list is not accessed via slug" do
         list = create :list
-        expect { get :show, id: list.id }.to raise_error
+        get :show, id: list.id
+        flash[:alert].should_not be_nil
+        response.should redirect_to(root_path)
       end
 
       it "secures list new" do
