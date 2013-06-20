@@ -17,11 +17,11 @@ describe AmazonAffiliate do
   end
 
   context "querying" do
-    it "queries amazon api and retrieve products" do
-      VCR.use_cassette('xbox', :tag => :search_keyword) do
-        response = @amazon_affiliate.search_keyword(@client, "xbox")
-        assert_not_nil response
-      end
-    end
+    # it "queries amazon api and retrieve products" do
+    #   VCR.use_cassette('xbox', :tag => :search_keyword) do
+    #     response = @amazon_affiliate.search_keyword(@client, "xbox")
+    #     assert_not_nil response
+    #   end
+    # end
   end
 end
