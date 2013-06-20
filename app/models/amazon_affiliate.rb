@@ -3,7 +3,7 @@ class AmazonAffiliate
   def search_keyword(asin_client, query)
     query.strip!
     raise "Query cannot be empty" if query.empty?
-    items = asin_client.search :Keywords => query, :SearchIndex => :All, :ResponseGroup => [ :Small, :Images ]
+    items = asin_client.search(:Keywords => query, :SearchIndex => :All, :ResponseGroup => [ :Small, :Images ])
     items = self.parse_items(items)
   end
 
