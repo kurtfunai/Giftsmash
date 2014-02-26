@@ -9,9 +9,9 @@ group :development do
   gem 'better_errors'
 
   # Guard
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i 
-  gem 'guard-test'
-  gem 'guard-livereload'
+  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i 
+  # gem 'guard-test'
+  # gem 'guard-livereload'
 end
 
 group :test do 
@@ -30,7 +30,9 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2'
+  # gem 'mysql2'
+  gem 'unicorn'
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -60,10 +62,11 @@ gem 'omniauth-twitter'
 
 # For Routing ( List slugs )
 gem 'friendly_id'
-
 # For Amazon Affiliate API
 gem 'asin'
 gem 'httpclient'
+# ENV vars
+gem 'figaro'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -72,10 +75,9 @@ gem 'httpclient'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'

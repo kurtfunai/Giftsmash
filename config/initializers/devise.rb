@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = CONFIG[:mail_from]
+  config.mailer_sender = ENV['mail_from']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = CONFIG[:devise_pepper]
+  # config.pepper = ENV['devise_pepper']
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -206,7 +206,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :twitter, CONFIG[:twitter_consumer_key], CONFIG[:twitter_consumer_secret]
+  config.omniauth :twitter, ENV['twitter_consumer_key'], ENV['twitter_consumer_secret']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

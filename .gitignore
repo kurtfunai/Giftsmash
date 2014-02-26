@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+logfile
 
 # Ignore database file
 /config/database.yml

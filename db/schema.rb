@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(:version => 20130209192143) do
     t.string   "name"
     t.string   "url"
     t.text     "description"
+    t.integer  "priority",    :limit => 3, :default => 0
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.integer  "list_id"
-    t.integer  "priority",    :limit => 3, :default => 0
     t.string   "asin"
   end
 

@@ -9,7 +9,7 @@ class List < ActiveRecord::Base
 
   # When creating a list, set the slug to be a sha1 hash of Time.new + user_id
   def date_and_user_id
-    self.slug = Digest::SHA1.hexdigest(Time.now.to_s + self.user_id.to_s + CONFIG[:list_slug_salt])
+    self.slug = Digest::SHA1.hexdigest(Time.now.to_s + self.user_id.to_s + ENV['list_slug_salt'])
   end
 
   def should_generate_new_friendly_id?

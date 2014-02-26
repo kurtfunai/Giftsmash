@@ -1,5 +1,5 @@
 ASIN::Configuration.configure do |config|
-  config.secret        = CONFIG[:asin_secret]
-  config.key           = CONFIG[:asin_key]
-  config.associate_tag = CONFIG[:asin_associate_tag]
+  config.secret        = ENV['asin_secret']
+  config.key           = ENV['asin_key']
+  config.associate_tag = ENV['asin_associate_tag']
 end

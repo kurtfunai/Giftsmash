@@ -18,8 +18,8 @@ VCR.configure do |c|
       :match_requests_on => [:method,
         VCR.request_matchers.uri_without_params(:Timestamp, :Version, :Signature)]
     }
-   c.filter_sensitive_data('<AWSAccessKeyId>', :search_keyword) { CONFIG[:asin_key] }
-   c.filter_sensitive_data('<AssociateTag>', :search_keyword) { CONFIG[:asin_associate_tag] }
+   c.filter_sensitive_data('<AWSAccessKeyId>', :search_keyword) { ENV['asin_key'] }
+   c.filter_sensitive_data('<AssociateTag>', :search_keyword) { ENV['asin_associate_tag'] }
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
