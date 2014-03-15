@@ -16,10 +16,10 @@
             <ul class="nav pull-right">
               <% if user_signed_in? %>
                 <li class="pull-right">
-                  <%= link_to raw('<i class="icon icon-cog"></i>Settings'), edit_user_registration_path %>
+                  <%= link_to raw('<i class="icon icon-cog"></i> Settings'), edit_user_registration_path %>
                 </li>
                 <li  class="pull-right">
-                  <%= link_to raw('<i class="icon icon-off"></i>Logout'), destroy_user_session_path, method: :delete%>
+                  <%= link_to raw('<i class="icon icon-off"></i> Logout'), destroy_user_session_path, method: :delete%>
                 </li>
               <% else %>
                   <li><%= link_to "Login", new_user_session_path %></li>
