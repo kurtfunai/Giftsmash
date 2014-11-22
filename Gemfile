@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '3.2.21'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,12 +9,12 @@ group :development do
   gem 'better_errors'
 
   # Guard
-  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i 
+  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   # gem 'guard-test'
   # gem 'guard-livereload'
 end
 
-group :test do 
+group :test do
   # API testing
   gem 'rake'
   gem 'webmock', '~> 1.9.0'
