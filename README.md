@@ -10,7 +10,7 @@ It's not intended for production use.
 Visible at:
 http://giftsmash.com
 
-To preview a list: http://giftsmash.com/lists/73754921b8c2c37e84f54e58951fc46128f33a1a
+To preview a list: http://www.giftsmash.com/lists/a782c4914d05831697899c6df9b2f589154bced0
 
 Installation
 ------------
